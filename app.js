@@ -28,11 +28,24 @@ async function getCharacter(x) {
   try {
     let result = await axios.get(web, headers);
     console.log(result)
-    const response = result.data.Search
+    const response = result.data.results
     console.log(response)
 
     response.forEach((item) => {
+      const charDiv = document.querySelector('.search-results')
+      const char = document.createElement('div')
+      char.className = ('char-display')
+      charDiv.append(char)
 
+      const charName = document.createElement('p')
+      const name = item.name
+      charName.textContent = `${name}`
+      char.append(charName)
+
+      const img = document.createElement('img')
+      img.setAttribute('src', item.image.url)
+      img.className = 'poster'
+      char.append(img)
     })
 
   } catch (error) {
