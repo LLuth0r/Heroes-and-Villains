@@ -1,9 +1,9 @@
 # Heroes-and-Villains
 
 **App Description**:  
-Heroes & Villains provides a database full of your favorite superheroes and comic book villains.  You can find your favorite hero or villain, see their stats, discover new heroes and villains through a random generator, see the highest rated and find related movies and tv shows.
+Heroes & Villains provides a database full of your favorite superheroes and comic book villains.  You can find your favorite hero or villain, see their stats, discover new heroes and villains through a random generator, and battle your favorite heroes and villains.
 
- **API**:\
+ **API**: https://superheroapi.com/api/access-token\
  Superhero API - Characters, Powerstats, Biography, Connections, Images
 
 - **API Snippet**: \
@@ -66,4 +66,5 @@ Heroes & Villains provides a database full of your favorite superheroes and comi
 - **Priority Matrix**:\
 ![Priority-Matrix](https://res.cloudinary.com/decd84s0g/image/upload/v1604980970/Heroes%20and%20Villains/Heroes_Villains_Priority_Matrix.001.jpg)
 
-- **Timeframes**: How long you anticipate spending on each area of development. Be sure to consider how many hours a day you plan to be coding and how many days you have available until presentation day. Components should be broken down into a maximum of 3 hours time blocks.
+- **Timeframes**:\
+![Project-Timing](https://res.cloudinary.com/decd84s0g/image/upload/v1605023564/Heroes%20and%20Villains/Heroes_and_Villains_Project_Timing.001.jpg) 
