@@ -42,13 +42,14 @@ Heroes & Villains provides a database full of your favorite superheroes and comi
 - **MVP**:  
     1. Heroes & Villains Search Bar - Return biography page
     2. Random Hero/Villain of the Day
-    3. Superhero Battle - Compare two characters powersets to see who will win!
+    3.
     
 - **Post-MVP**: 
-    1. Top 10 Heroes/Villains
-    2. Related movies/tv shows
-    3. Comic Con links/appearances
-    4. User Selected Hero/Villain CSS Theme
+    1. Superhero Battle - Compare two characters powersets to see who will win! 
+    2. Top 10 Heroes/Villains
+    3. Related movies/tv shows
+    4. Comic Con links/appearances
+    5. User Selected Hero/Villain CSS Theme
     
 - **Goals**: 
     * Day 1: HTML Template, Javascript API Connection, Search & Biography Page Templates
