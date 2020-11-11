@@ -32,20 +32,42 @@ async function getCharacter(x) {
     console.log(response)
 
     response.forEach((item) => {
+
+      const imgDiv = document.querySelector('.img-section')
+      const profile = document.createElement('div')
+      profile.className = ('profile')
+      imgDiv.append(profile)
+
+      const img = document.createElement('img')
+      img.setAttribute('src', item.image.url)
+      img.className = ('poster')
+      profile.append(img)
+
+
       const charDiv = document.querySelector('.search-results')
       const char = document.createElement('div')
       char.className = ('char-display')
       charDiv.append(char)
 
       const charName = document.createElement('p')
-      const name = item.name
-      charName.textContent = `${name}`
+      const identity = item.name
+      charName.textContent = `${identity}`
+      charName.className = ('identity')
       char.append(charName)
 
-      const img = document.createElement('img')
-      img.setAttribute('src', item.image.url)
-      img.className = 'poster'
-      char.append(img)
+      const fullName = document.createElement('p')
+      const name = item.biography['full-name']
+      fullName.textContent = `${name}`
+      fullName.className = ('full-name')
+      char.append(fullName)
+
+      const jobTitle = document.createElement('p')
+      const occupation = item.work['occupation']
+      jobTitle.textContent = `${occupation}`
+      jobTitle.className = ('occupation')
+      char.append(jobTitle)
+
+
     })
 
   } catch (error) {

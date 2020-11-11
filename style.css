@@ -28,3 +28,70 @@ body {
   font-size: 24px;
   margin:0;
 }
+
+
+
+.img-section {
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+}
+
+.profile {
+  align-items: flex-start;
+  flex: 0;
+  width: 125px;
+}
+
+.poster {
+  width: 75px;
+  height: auto;
+  margin: 0px 0px 15px 0px;
+  border-radius: 35%;
+}
+
+.search-section {
+  margin: 0px 0px 25px 0px;
+}
+
+.char-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+
+.name {
+ align-items: flex-start;
+  order:1;
+  font-family: 'Condiment', cursive;
+  font-size: 20px;
+  margin:0px 0px 0px 15px;
+  
+}
+
+.identity {
+  align-items: flex-start;
+  order:2;
+  font-family: 'Condiment', cursive;
+  font-size: 16px;
+  margin: 0px 0px 0px 15px;
+}
+
+.full-name {
+  
+  order:2;
+  font-family: 'Condiment', cursive;
+  font-size: 16px;
+  margin: 0px 0px 0px 15px;
+}
+
+.occupation {
+  align-self: stretch;
+  order: 2;
+  font-family: 'Condiment', cursive;
+  font-size: 16px;
+  margin: 0px 0px 0px 15px;
+}
+
+
