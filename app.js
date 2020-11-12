@@ -52,18 +52,11 @@ async function getCharacter(x) {
       imgDiv.append(img)
       img.addEventListener('click', getId)
 
-
-      // const charDiv = document.querySelector('.p-search-results')
-      // const char = document.createElement('div')
-      // char.className = ('c3-character')
-      // imgDiv.append(char)
-
       const charName = document.createElement('p')
       const identity = item.name
       charName.textContent = `Identity: ` + `${identity}`
       charName.className = ('c2-identity')
       imgDiv.append(charName)
-
 
       const jobTitle = document.createElement('p')
       const occupation = item.work['occupation']
@@ -76,11 +69,6 @@ async function getCharacter(x) {
       groups.textContent = `Known Affiliations: ` + `${affiliations}`
       groups.className = ('c4-affiliations')
       imgDiv.append(groups)
-
-      // const fullName = document.createElement('p')
-      // const name = item.biography['full-name', 'place-of-birth']
-      // fullName.textContent = `${name}`
-      // imgDiv.append(name)
 
     })
 
@@ -114,15 +102,19 @@ async function getId(y) {
 //Remove search results function
 function removeSearch() {
   const removeSection = document.querySelector('.p-search-results')
+  const removeRandom = document.querySelector('.p-random-character')
   while (removeSection.lastChild) {
     removeSection.removeChild(removeSection.lastChild)
   }
+  while (removeRandom.lastChild) {
+    removeRandom.removeChild(removeRandom.lastChild)
+  }
 }
+
 //End of search results function
 
 
 //Write function to randomly pull a character
-
 function randomCharacter() {
   const min = 0;
   const max = 731;
@@ -131,6 +123,7 @@ function randomCharacter() {
 
 async function getRandomCharacter() {
   randomCharacter()
+  removeSearch()
   const characterId = randomCharacter('value')
   const character = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
 
@@ -138,9 +131,31 @@ async function getRandomCharacter() {
     result = await axios.get(character)
     console.log(result)
     const response = result.data
-    console.log(response)
+    // console.log(response)
 
     const characterPage = document.querySelector('.p-random-character')
+    const img = document.createElement('img')
+    img.setAttribute('src', response.image.url)
+    img.className = ('r1-img')
+    characterPage.append(img)
+
+    const charIdentity = document.createElement('p')
+    const identity = response.name
+    charIdentity.textContent = `Identity: ` + `${identity}`
+    charIdentity.className = ('r2-identity')
+    characterPage.append(charIdentity)
+
+    const organizations = document.createElement('p')
+    const affiliations = response.connections['group-affiliation']
+    organizations.textContent = `Known Affiliations: ` + `${affiliations}`
+    organizations.className = ('r3-affiliations')
+    characterPage.append(organizations)
+
+    const powerStats = document.createElement('p')
+    const powers = response.powerstats
+    powerStats.textContent = 'Powers: ' + `${powers}`
+    powerStats.className = ('r4-powers')
+    characterPage.append(powerStats)
 
   }
   catch (error) {
