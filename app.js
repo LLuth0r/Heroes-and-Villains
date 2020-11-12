@@ -13,6 +13,8 @@ const API_KEY = '10157236778121862'
 const search_url = 'https://superheroapi.com/api/10157236778121862/search/'
 const textInput = document.querySelector('#blank')
 const searchButton = document.querySelector('#search')
+const searchRandomCharacter = document.querySelector('.random-character')
+
 
 function getResults() {
   const input = textInput.value
@@ -21,6 +23,7 @@ function getResults() {
 }
 
 searchButton.addEventListener('click', getResults)
+searchRandomCharacter.addEventListener('click', getRandomCharacter)
 
 //Search API for character and return bio
 async function getCharacter(x) {
@@ -87,6 +90,7 @@ async function getCharacter(x) {
 }
 //End main search results
 
+
 //Write function to get more data from clicking on img of returned search results
 
 async function getId(y) {
@@ -104,11 +108,42 @@ async function getId(y) {
     console.log(error)
   }
 }
+//End of getId function
+
 
 //Remove search results function
 function removeSearch() {
   const removeSection = document.querySelector('.p-search-results')
   while (removeSection.lastChild) {
     removeSection.removeChild(removeSection.lastChild)
+  }
+}
+//End of search results function
+
+
+//Write function to randomly pull a character
+
+function randomCharacter() {
+  const min = 0;
+  const max = 731;
+  return Math.floor(min + Math.random() * (max + 1 - min));
+}
+
+async function getRandomCharacter() {
+  randomCharacter()
+  const characterId = randomCharacter('value')
+  const character = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
+
+  try {
+    result = await axios.get(character)
+    console.log(result)
+    const response = result.data
+    console.log(response)
+
+    const characterPage = document.querySelector('.p-random-character')
+
+  }
+  catch (error) {
+    console.log(error)
   }
 }

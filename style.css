@@ -21,14 +21,14 @@ body {
   justify-content: space-around;  
 }
 
-.random-hero {
+.random-character {
   display:flex;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 24px;
   margin:0;
 }
 
-.random-villain{
+.battle{
   display:flex;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 24px;
