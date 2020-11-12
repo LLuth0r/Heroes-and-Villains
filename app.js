@@ -151,11 +151,41 @@ async function getRandomCharacter() {
     organizations.className = ('r3-affiliations')
     characterPage.append(organizations)
 
-    const powerStats = document.createElement('p')
-    const powers = response.powerstats
-    powerStats.textContent = 'Powers: ' + `${powers}`
+    const powerStats = document.createElement('ul')
+    powerStats.textContent = 'Powers: '
     powerStats.className = ('r4-powers')
     characterPage.append(powerStats)
+
+    const combatLi = document.createElement('li')
+    const combat = response.powerstats
+    combatLi.textContent = `Combat: ${combat.combat}`
+    powerStats.append(combatLi)
+
+    const durabilityLi = document.createElement('li')
+    const durability = response.powerstats
+    durabilityLi.textContent = `Durability: ${durability.durability}`
+    powerStats.append(durabilityLi)
+
+    const intelligenceLi = document.createElement('li')
+    const intelligence = response.powerstats
+    intelligenceLi.textContent = `Intelligence: ${intelligence.intelligence}`
+    powerStats.append(intelligenceLi)
+
+    const powerLi = document.createElement('li')
+    const power = response.powerstats
+    powerLi.textContent = `Power: ${power.intelligence}`
+    powerStats.append(intelligenceLi)
+
+    const speedLi = document.createElement('li')
+    const speed = response.powerstats
+    speedLi.textContent = `Speed: ${speed.speed}`
+    powerStats.append(speedLi)
+
+    const strengthLi = document.createElement('li')
+    const strength = response.powerstats
+    strengthLi.textContent = `Strength: ${strength.strength}`
+    powerStats.append(strengthLi)
+
 
   }
   catch (error) {
