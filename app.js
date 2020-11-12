@@ -57,20 +57,20 @@ async function getCharacter(x) {
 
       const charName = document.createElement('p')
       const identity = item.name
-      charName.textContent = `${identity}`
+      charName.textContent = `Identity: ` + `${identity}`
       charName.className = ('c2-identity')
       imgDiv.append(charName)
 
 
       const jobTitle = document.createElement('p')
       const occupation = item.work['occupation']
-      jobTitle.textContent = `${occupation}`
+      jobTitle.textContent = `Occupation: ` + `${occupation}`
       jobTitle.className = ('c3-occupation')
       imgDiv.append(jobTitle)
 
       const groups = document.createElement('p')
-      const affiliations = item.connections['group-affilition']
-      groups.textContent = `${affiliations}`
+      const affiliations = item.connections['group-affiliation']
+      groups.textContent = `Known Affiliations: ` + `${affiliations}`
       groups.className = ('c4-affiliations')
       imgDiv.append(groups)
 
