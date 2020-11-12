@@ -24,6 +24,7 @@ searchButton.addEventListener('click', getResults)
 
 //Search API for character and return bio
 async function getCharacter(x) {
+  removeSearch()
 
   const web = (cors_api_url + `https://superheroapi.com/api/10157236778121862/search/${x}`)
 
@@ -37,41 +38,46 @@ async function getCharacter(x) {
     response.forEach((item) => {
 
       const imgDiv = document.querySelector('.p-search-results')
-      const profile = document.createElement('div')
-      profile.className = ('c1-profile')
-      imgDiv.append(profile)
+      // const profile = document.createElement('div')
+      // profile.className = ('c1-profile')
+      // imgDiv.append(profile)
 
       const img = document.createElement('img')
       img.setAttribute('src', item.image.url)
       img.setAttribute('value', item.id)
-      img.className = ('c2-poster')
-      profile.append(img)
+      img.className = ('c1-poster')
+      imgDiv.append(img)
       img.addEventListener('click', getId)
 
 
-      const charDiv = document.querySelector('.p-search-results')
-      const char = document.createElement('div')
-      char.className = ('c3-character')
-      charDiv.append(char)
+      // const charDiv = document.querySelector('.p-search-results')
+      // const char = document.createElement('div')
+      // char.className = ('c3-character')
+      // imgDiv.append(char)
 
       const charName = document.createElement('p')
       const identity = item.name
       charName.textContent = `${identity}`
-      charName.className = ('c4-identity')
-      char.append(charName)
+      charName.className = ('c2-identity')
+      imgDiv.append(charName)
 
 
       const jobTitle = document.createElement('p')
       const occupation = item.work['occupation']
       jobTitle.textContent = `${occupation}`
-      jobTitle.className = ('c5-occupation')
-      char.append(jobTitle)
+      jobTitle.className = ('c3-occupation')
+      imgDiv.append(jobTitle)
 
       const groups = document.createElement('p')
       const affiliations = item.connections['group-affilition']
       groups.textContent = `${affiliations}`
-      groups.className = ('c6-affiliations')
-      char.append(groups)
+      groups.className = ('c4-affiliations')
+      imgDiv.append(groups)
+
+      // const fullName = document.createElement('p')
+      // const name = item.biography['full-name', 'place-of-birth']
+      // fullName.textContent = `${name}`
+      // imgDiv.append(name)
 
     })
 
@@ -96,5 +102,13 @@ async function getId(y) {
   }
   catch (error) {
     console.log(error)
+  }
+}
+
+//Remove search results function
+function removeSearch() {
+  const removeSection = document.querySelector('.p-search-results')
+  while (removeSection.lastChild) {
+    removeSection.removeChild(removeSection.lastChild)
   }
 }
