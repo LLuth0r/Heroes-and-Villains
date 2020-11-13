@@ -13,7 +13,7 @@ const API_KEY = '10157236778121862'
 const search_url = 'https://superheroapi.com/api/10157236778121862/search/'
 const textInput = document.querySelector('#blank')
 const searchButton = document.querySelector('#search')
-const searchRandomCharacter = document.querySelector('.random-character')
+const searchRandomCharacter = document.querySelector('.random-character-button')
 
 
 function getResults() {
@@ -145,15 +145,38 @@ async function getRandomCharacter() {
     charIdentity.className = ('r2-identity')
     characterPage.append(charIdentity)
 
+    const charAppearance = document.createElement('ul')
+    charAppearance.className = ('r3-appearance-list')
+    characterPage.append(charAppearance)
+
+    const genderLi = document.createElement('li')
+    const gender = response.appearance
+    genderLi.textContent = `Gender: ${gender.gender}`
+    charAppearance.append(genderLi)
+
+    const heightLi = document.createElement('li')
+    const height = response.appearance
+    heightLi.textContent = `Height: ${height.height}`
+    charAppearance.append(heightLi)
+
+    const weightLi = document.createElement('li')
+    const weight = response.appearance
+    weightLi.textContent = `Weight: ${weight.weight}`
+    charAppearance.append(weightLi)
+
+    const raceLi = document.createElement('li')
+    const race = response.appearance
+    raceLi.textContent = `Race: ${race.race}`
+    charAppearance.append(raceLi)
+
     const organizations = document.createElement('p')
     const affiliations = response.connections['group-affiliation']
     organizations.textContent = `Known Affiliations: ` + `${affiliations}`
-    organizations.className = ('r3-affiliations')
+    organizations.className = ('r4-affiliations')
     characterPage.append(organizations)
 
     const powerStats = document.createElement('ul')
-    powerStats.textContent = 'Powers: '
-    powerStats.className = ('r4-powers')
+    powerStats.className = ('r5-powers')
     characterPage.append(powerStats)
 
     const combatLi = document.createElement('li')

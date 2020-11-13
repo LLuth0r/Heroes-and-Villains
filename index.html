@@ -4,6 +4,8 @@
 <head>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" media="screen">
@@ -13,21 +15,20 @@
 </head>
 
 <body>
-  <h1 class="title">Heroes & Villains</h1>
-  <section class="subheader-section">
-    <button class="random-character">Random Character</button>
-    <h4 class="battle">Battle</h4>
+  <section class="title-bar">
+    <img src="H e r o e s.png" class="title">
+
+    <button class="random-character-button">Random Character</button>
+    <div class="search-section">
+      <input type="text" id="blank" placeholder="Character Search">
+      <button id="search">Search</button>
+    </div>
   </section>
 
-  <div class="search-section">
-    <input type="text" id="blank" placeholder="Character Search">
-    <button id="search">Search</button>
   </div>
-  <section class="p-search-results">
-  </section>
+  <section class="p-search-results"></section>
 
-  <section class="p-random-character">
-  </section>
+  <section class="p-random-character"></section>
 
 </body>
 
