@@ -145,8 +145,14 @@ async function getRandomCharacter() {
     charIdentity.className = ('r2-identity')
     characterPage.append(charIdentity)
 
+    const charAlias = document.createElement('p')
+    const alias = response.biography.aliases
+    charAlias.textContent = `Alias: ` + `${alias}`
+    charAlias.className = ('r3-alias')
+    characterPage.append(charAlias)
+
     const charAppearance = document.createElement('ul')
-    charAppearance.className = ('r3-appearance-list')
+    charAppearance.className = ('r4-appearance-list')
     characterPage.append(charAppearance)
 
     const genderLi = document.createElement('li')
@@ -172,11 +178,11 @@ async function getRandomCharacter() {
     const organizations = document.createElement('p')
     const affiliations = response.connections['group-affiliation']
     organizations.textContent = `Known Affiliations: ` + `${affiliations}`
-    organizations.className = ('r4-affiliations')
+    organizations.className = ('r5-affiliations')
     characterPage.append(organizations)
 
     const powerStats = document.createElement('ul')
-    powerStats.className = ('r5-powers')
+    powerStats.className = ('r6-powers')
     characterPage.append(powerStats)
 
     const combatLi = document.createElement('li')
@@ -208,7 +214,6 @@ async function getRandomCharacter() {
     const strength = response.powerstats
     strengthLi.textContent = `Strength: ${strength.strength}`
     powerStats.append(strengthLi)
-
 
   }
   catch (error) {
