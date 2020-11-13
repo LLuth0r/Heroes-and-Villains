@@ -225,16 +225,28 @@ align-self: center;
 height: 300px;
 width:auto;
 grid-row-start:2;
-justify-self: center;
+justify-self: end;
+margin: 0;
 }
 
 .b1-identity{
 grid-row-start:1;
-justify-self:center;
+justify-self:end;
+align-self: end;
+font-family: 'Iceland',cursive;
+font-size: 30px;
+text-align:right;
+margin-bottom:10px;
+
 }
 
 .b1-powers {
 grid-row-start:3;
+list-style-type: none;
+font-family: 'Iceland',cursive;
+font-size: 22px;
+text-align:right;
+margin-top:5px;
 }
 
 .p-battle2 {
@@ -253,14 +265,25 @@ height: 300px;
 width: auto;
 grid-column-start:3;
 grid-row-start: 2;
-justify-self: center;
+justify-self: left;
+margin:0;
 }
 
 .b2-identity{
-grid-row-start:1;
 grid-column-start:3;
+grid-row-start:1;
+font-family: 'Iceland',cursive;
+font-size:30px;
+justify-self: start;
+align-self:end;
+margin-bottom:10px;
 }
 
 .b2-powers {
-
+  grid-row-start:3;
+  list-style-type: none;
+  font-family: 'Iceland',cursive;
+  font-size: 22px;
+  text-align:left;
+  margin-top:5px;
 }
