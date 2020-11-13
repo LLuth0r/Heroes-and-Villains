@@ -5,7 +5,7 @@
 //     //     // 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
 //   }
 
-// const { group } = require("console");
+// // const { group } = require("console");
 
 const cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 const domain = 'https://superheroapi.com/api/'
@@ -53,7 +53,7 @@ async function getCharacter(x) {
       img.setAttribute('value', item.id)
       img.className = ('c1-poster')
       imgDiv.append(img)
-      img.addEventListener('click', getId)
+      img.addEventListener('click', getId(retrieveCharacter))
 
       const charName = document.createElement('p')
       const identity = item.name
@@ -227,6 +227,7 @@ async function getRandomCharacter() {
 }
 //End of Random Character Function
 
+
 //Battle function setup
 async function doBattle() {
   randomCharacter()
@@ -374,6 +375,135 @@ async function doBattle() {
     powerStats2.append(strengthLi2)
 
   } catch (error) {
+    console.log(error)
+  }
+}
+
+//Function to create modal from search results
+
+
+
+function openModal() {
+  let modalButton = document.querySelector('.modal-btn')
+  let modal = document.querySelector('.modal')
+  let closeButton = document.querySelector('.close-btn')
+
+  modalButton.onclick = function () {
+    modal.style.display = "block"
+  }
+
+  closeButton.onclick = function () {
+    modal.style.display = "none"
+  }
+
+  window.onclick = function (e) {
+    if (e.target == modal) {
+      modal.style.display = "none"
+    }
+  }
+  return
+}
+
+
+
+
+//Retrieving character info from search results
+async function retrieveCharacter(e) {
+  removeSearch()
+  openModal()
+  const characterId = e.target.getAttribute('value')
+  const getCharacter = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
+
+  try {
+    result = await axios.get(getCharacter)
+    console.log(result)
+    const response = result.data
+    // console.log(response)
+
+    const modalPage = document.querySelector('.modal')
+    const modalImg = document.createElement('img')
+    img.setAttribute('src', response.image.url)
+    img.className = ('m1-img')
+    modalPage.append(modalImg)
+
+    const modalIdentity = document.createElement('p')
+    const modalId = response.name
+    modalIdentity.textContent = `Identity: ` + `${modalId}`
+    modalIdentity.className = ('r2-identity')
+    modalPage.append(modalIdentity)
+
+    const modalAlias = document.createElement('p')
+    const modalA = response.biography.aliases
+    modalAlias.textContent = `Alias: ` + `${modalA}`
+    modalAlias.className = ('r3-alias')
+    modalPage.append(modalAlias)
+
+    // const charAppearance = document.createElement('ul')
+    // charAppearance.className = ('r4-appearance-list')
+    // characterPage.append(charAppearance)
+
+    // const genderLi = document.createElement('li')
+    // const gender = response.appearance
+    // genderLi.textContent = `Gender: ${gender.gender}`
+    // charAppearance.append(genderLi)
+
+    // const heightLi = document.createElement('li')
+    // const height = response.appearance
+    // heightLi.textContent = `Height: ${height.height}`
+    // charAppearance.append(heightLi)
+
+    // const weightLi = document.createElement('li')
+    // const weight = response.appearance
+    // weightLi.textContent = `Weight: ${weight.weight}`
+    // charAppearance.append(weightLi)
+
+    // const raceLi = document.createElement('li')
+    // const race = response.appearance
+    // raceLi.textContent = `Race: ${race.race}`
+    // charAppearance.append(raceLi)
+
+    // const organizations = document.createElement('p')
+    // const affiliations = response.connections['group-affiliation']
+    // organizations.textContent = `Known Affiliations: ` + `${affiliations}`
+    // organizations.className = ('r5-affiliations')
+    // characterPage.append(organizations)
+
+    // const powerStats = document.createElement('ul')
+    // powerStats.className = ('r6-powers')
+    // characterPage.append(powerStats)
+
+    // const combatLi = document.createElement('li')
+    // const combat = response.powerstats
+    // combatLi.textContent = `Combat: ${combat.combat}`
+    // powerStats.append(combatLi)
+
+    // const durabilityLi = document.createElement('li')
+    // const durability = response.powerstats
+    // durabilityLi.textContent = `Durability: ${durability.durability}`
+    // powerStats.append(durabilityLi)
+
+    // const intelligenceLi = document.createElement('li')
+    // const intelligence = response.powerstats
+    // intelligenceLi.textContent = `Intelligence: ${intelligence.intelligence}`
+    // powerStats.append(intelligenceLi)
+
+    // const powerLi = document.createElement('li')
+    // const power = response.powerstats
+    // powerLi.textContent = `Power: ${power.power}`
+    // powerStats.append(intelligenceLi)
+
+    // const speedLi = document.createElement('li')
+    // const speed = response.powerstats
+    // speedLi.textContent = `Speed: ${speed.speed}`
+    // powerStats.append(speedLi)
+
+    // const strengthLi = document.createElement('li')
+    // const strength = response.powerstats
+    // strengthLi.textContent = `Strength: ${strength.strength}`
+    // powerStats.append(strengthLi)
+
+  }
+  catch (error) {
     console.log(error)
   }
 }
