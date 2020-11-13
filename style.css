@@ -16,18 +16,30 @@ body {
 
 
 .title-bar{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 5, 1fr;
+  grid-template-rows: 1fr .2fr;
+  gap: 0px 2px;
+  grid-template-areas:
+    ". . . ."
+    ". . . .";
   margin-bottom: 15px;
   padding: 0px;
   background-color: #7C969C
 }
-.title {
+.logo {
+  grid-row: span 2;
   margin: 0;
   font-family: 'Spicy Rice',cursive;
   font-size: 24px;
   height: 125px;
+}
+
+.h1{
+  grid-column-start:3;
+  grid-column: span 3;
+  font-family: 'Iceland', cursive;
+  font-size:30px;
 }
 
 .random-character-button {
@@ -35,6 +47,9 @@ body {
   font-family: 'Iceland', cursive;
   font-size: 22px;
   margin:0;
+  grid-row-start:2;
+  grid-column-start:2;
+  justify-self: start;
 }
 
 .battle-button{
@@ -42,6 +57,9 @@ body {
   font-family: 'Iceland', cursive;
   font-size:22px;
   margin:0;
+  grid-row-start:2;
+  grid-column-start:3;
+  justify-self: start;
 }
 
 #blank {
@@ -53,15 +71,15 @@ body {
   font-family: 'Iceland', cursive;
   font-size: 21px;
   color: white;
+  grid-row-start: 2;
+  grid-column-start: 4;
 }
 
 #search{
   font-family: 'Iceland', cursive;
   font-size: 22px;
-}
-
-.search-section {
-align-items: stretch;
+  grid-row-start: 2;
+  grid-column-start: 5;
 }
 
 
@@ -227,6 +245,9 @@ width:auto;
 grid-row-start:2;
 justify-self: end;
 margin: 0;
+border-radius: 15%;
+border-style: solid;
+border-width: 2px;
 }
 
 .b1-identity{
@@ -249,7 +270,18 @@ text-align:right;
 margin-top:5px;
 }
 
-.p-battle2 {
+.b1-powers-text {
+  grid-column-start:2;
+  grid-row-start:3;
+  list-style-type: none;
+  font-family: 'Iceland',cursive;
+  font-size:22px;
+  justify-self: center;
+  align-self:start;
+  margin-top:5px;
+  padding:0;
+}
+/* .p-battle2 {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.2fr 1.3fr 1.1fr;
@@ -258,7 +290,7 @@ margin-top:5px;
     "."
     "."
     ".";
-}
+} */
 
 .b2-img{
 height: 300px;
@@ -267,6 +299,9 @@ grid-column-start:3;
 grid-row-start: 2;
 justify-self: left;
 margin:0;
+border-radius: 15%;
+border-style: solid;
+border-width: 2px;
 }
 
 .b2-identity{
@@ -280,10 +315,14 @@ margin-bottom:10px;
 }
 
 .b2-powers {
+  grid-column-start:3;
   grid-row-start:3;
   list-style-type: none;
   font-family: 'Iceland',cursive;
   font-size: 22px;
+  justify-self: start;
+  align-self:start;
   text-align:left;
   margin-top:5px;
+  padding:0;
 }

@@ -263,33 +263,68 @@ async function doBattle() {
 
     const combatLi1 = document.createElement('li')
     const combat1 = response1.powerstats
-    combatLi1.textContent = `Combat: ${combat1.combat}`
+    combatLi1.textContent = `${combat1.combat}`
     powerStats1.append(combatLi1)
 
     const durabilityLi1 = document.createElement('li')
     const durability1 = response1.powerstats
-    durabilityLi1.textContent = `Durability: ${durability1.durability}`
+    durabilityLi1.textContent = `${durability1.durability}`
     powerStats1.append(durabilityLi1)
 
     const intelligenceLi1 = document.createElement('li')
     const intelligence1 = response1.powerstats
-    intelligenceLi1.textContent = `Intelligence: ${intelligence1.intelligence}`
+    intelligenceLi1.textContent = `${intelligence1.intelligence}`
     powerStats1.append(intelligenceLi1)
 
     const powerLi1 = document.createElement('li')
     const power1 = response1.powerstats
-    powerLi1.textContent = `Power: ${power1.power}`
+    powerLi1.textContent = `${power1.power}`
     powerStats1.append(intelligenceLi1)
 
     const speedLi1 = document.createElement('li')
     const speed1 = response1.powerstats
-    speedLi1.textContent = `Speed: ${speed1.speed}`
+    speedLi1.textContent = `${speed1.speed}`
     powerStats1.append(speedLi1)
 
     const strengthLi1 = document.createElement('li')
     const strength1 = response1.powerstats
-    strengthLi1.textContent = `Strength: ${strength1.strength}`
+    strengthLi1.textContent = `${strength1.strength}`
     powerStats1.append(strengthLi1)
+    //End Character 1 creation
+
+
+    //Creating list item descriptions
+
+    const powerStatsText = document.createElement('ul')
+    powerStatsText.className = ('b1-powers-text')
+    battlePage1.append(powerStatsText)
+
+    const combatLiText = document.createElement('li')
+    combatLiText.textContent = `Combat:`
+    powerStatsText.append(combatLiText)
+
+    const durabilityLiText = document.createElement('li')
+    durabilityLiText.textContent = `Durability:`
+    powerStatsText.append(durabilityLiText)
+
+    const intelligenceLiText = document.createElement('li')
+    intelligenceLiText.textContent = `Intelligence:`
+    powerStatsText.append(intelligenceLiText)
+
+    const powerLiText = document.createElement('li')
+    powerLiText.textContent = `Power:`
+    powerStatsText.append(intelligenceLiText)
+
+    const speedLiText = document.createElement('li')
+    speedLiText.textContent = `Speed:`
+    powerStatsText.append(speedLiText)
+
+    const strengthLiText = document.createElement('li')
+    strengthLiText.textContent = `Strength:`
+    powerStatsText.append(strengthLiText)
+
+    //End creating list item descriptions
+
 
     //Character 2 Stats
     const battlePage2 = document.querySelector('.p-battle1')
@@ -310,32 +345,32 @@ async function doBattle() {
 
     const combatLi2 = document.createElement('li')
     const combat2 = response2.powerstats
-    combatLi2.textContent = `Combat: ${combat2.combat}`
-    powerStats2.append(combatLi)
+    combatLi2.textContent = `${combat2.combat}`
+    powerStats2.append(combatLi2)
 
     const durabilityLi2 = document.createElement('li')
     const durability2 = response2.powerstats
-    durabilityLi2.textContent = `Durability: ${durability2.durability}`
-    powerStats2.append(durabilityLi)
+    durabilityLi2.textContent = `${durability2.durability}`
+    powerStats2.append(durabilityLi2)
 
     const intelligenceLi2 = document.createElement('li')
     const intelligence2 = response2.powerstats
-    intelligenceLi2.textContent = `Intelligence: ${intelligence2.intelligence}`
-    powerStats2.append(intelligenceLi)
+    intelligenceLi2.textContent = `${intelligence2.intelligence}`
+    powerStats2.append(intelligenceLi2)
 
     const powerLi2 = document.createElement('li')
     const power2 = response2.powerstats
-    powerLi2.textContent = `Power: ${power2.power}`
+    powerLi2.textContent = `${power2.power}`
     powerStats2.append(intelligenceLi2)
 
     const speedLi2 = document.createElement('li')
     const speed2 = response2.powerstats
-    speedLi2.textContent = `Speed: ${speed2.speed}`
+    speedLi2.textContent = `${speed2.speed}`
     powerStats2.append(speedLi2)
 
     const strengthLi2 = document.createElement('li')
     const strength2 = response2.powerstats
-    strengthLi2.textContent = `Strength: ${strength2.strength}`
+    strengthLi2.textContent = `${strength2.strength}`
     powerStats2.append(strengthLi2)
 
   } catch (error) {
