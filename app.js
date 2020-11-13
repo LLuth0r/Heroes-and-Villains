@@ -1,13 +1,15 @@
-// const headers = {
-//   headers: {
-//     'Access-Control-Allow-Origin': '*'
-//     //     // 'Access-Control-Allow-Methods': 'POST'
-//     //     // 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-//   }
+const headers = {
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Method": "*",
+    "Access-Control-Allow-Headers": "*",
+    // "Access-Control-Request-Headers": "origin",
+    'Content-Type': 'application/json'
+  }
+}
 
-// // const { group } = require("console");
 
-const cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+const cors_api_url = 'https://cors-anywhere.herokuapp.com/'
 const domain = 'https://superheroapi.com/api/'
 const API_KEY = '10157236778121862'
 const search_url = 'https://superheroapi.com/api/10157236778121862/search/'
@@ -32,7 +34,7 @@ battleButton.addEventListener('click', doBattle)
 async function getCharacter(x) {
   removeSearch()
 
-  const web = (cors_api_url + `https://superheroapi.com/api/10157236778121862/search/${x}`)
+  const web = (cors_api_url + `https://superheroapi.com/api/${API_KEY}/search/${x}`)
 
   //Return main search results by search input bar
   try {
@@ -44,16 +46,13 @@ async function getCharacter(x) {
     response.forEach((item) => {
 
       const imgDiv = document.querySelector('.p-search-results')
-      // const profile = document.createElement('div')
-      // profile.className = ('c1-profile')
-      // imgDiv.append(profile)
 
       const img = document.createElement('img')
       img.setAttribute('src', item.image.url)
       img.setAttribute('value', item.id)
       img.className = ('c1-poster')
       imgDiv.append(img)
-      img.addEventListener('click', getId(retrieveCharacter))
+      img.addEventListener('click', getId)
 
       const charName = document.createElement('p')
       const identity = item.name
@@ -130,7 +129,7 @@ async function getRandomCharacter() {
   randomCharacter()
   removeSearch()
   const characterId = randomCharacter('value')
-  const character = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
+  const character = `https://superheroapi.com/api/10157236778121862/${characterId}`
 
   try {
     result = await axios.get(character)
@@ -379,9 +378,8 @@ async function doBattle() {
   }
 }
 
+
 //Function to create modal from search results
-
-
 
 function openModal() {
   let modalButton = document.querySelector('.modal-btn')
@@ -407,7 +405,7 @@ function openModal() {
 
 
 
-//Retrieving character info from search results
+// //Retrieving character info from search results
 async function retrieveCharacter(e) {
   removeSearch()
   openModal()
@@ -426,17 +424,17 @@ async function retrieveCharacter(e) {
     img.className = ('m1-img')
     modalPage.append(modalImg)
 
-    const modalIdentity = document.createElement('p')
-    const modalId = response.name
-    modalIdentity.textContent = `Identity: ` + `${modalId}`
-    modalIdentity.className = ('r2-identity')
-    modalPage.append(modalIdentity)
+    // const modalIdentity = document.createElement('p')
+    // const modalId = response.name
+    // modalIdentity.textContent = `Identity: ` + `${modalId}`
+    // modalIdentity.className = ('r2-identity')
+    // modalPage.append(modalIdentity)
 
-    const modalAlias = document.createElement('p')
-    const modalA = response.biography.aliases
-    modalAlias.textContent = `Alias: ` + `${modalA}`
-    modalAlias.className = ('r3-alias')
-    modalPage.append(modalAlias)
+    // const modalAlias = document.createElement('p')
+    // const modalA = response.biography.aliases
+    // modalAlias.textContent = `Alias: ` + `${modalA}`
+    // modalAlias.className = ('r3-alias')
+    // modalPage.append(modalAlias)
 
     // const charAppearance = document.createElement('ul')
     // charAppearance.className = ('r4-appearance-list')
