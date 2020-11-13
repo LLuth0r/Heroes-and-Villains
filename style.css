@@ -37,6 +37,13 @@ body {
   margin:0;
 }
 
+.battle-button{
+  height: 28px;
+  font-family: 'Iceland', cursive;
+  font-size:22px;
+  margin:0;
+}
+
 #blank {
   background-color: #2c3537;
   opacity: 50%;
@@ -199,4 +206,61 @@ align-self: center;
   padding: 0;
   font-family: 'Iceland', cursive;
   font-size: 22px;
+}
+
+/*Battle Section*/
+.p-battle1 {
+    display: grid;
+    display: grid;
+    grid-template-columns: 1.3fr 0.4fr 1.3fr;
+    grid-template-rows: 0.2fr 1.3fr 1.1fr;
+    gap: 0px 15px;
+    grid-template-areas:
+      ". . ."
+      ". . ."
+      ". . .";
+}
+
+.b1-img{
+height: 300px;
+width:auto;
+grid-row-start:2;
+justify-self: center;
+}
+
+.b1-identity{
+grid-row-start:1;
+justify-self:center;
+}
+
+.b1-powers {
+grid-row-start:3;
+}
+
+.p-battle2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1.3fr 1.1fr;
+  gap: 0px 15px;
+  grid-template-areas:
+    "."
+    "."
+    ".";
+}
+
+.b2-img{
+height: 300px;
+width: auto;
+grid-column-start:3;
+grid-row-start: 2;
+justify-self: center;
+}
+
+.b2-identity{
+grid-row-start:1;
+grid-column-start:3;
+}
+
+.b2-powers {
+
 }
