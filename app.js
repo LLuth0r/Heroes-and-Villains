@@ -1,12 +1,12 @@
-const headers = {
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Method": "*",
-    "Access-Control-Allow-Headers": "*",
-    // "Access-Control-Request-Headers": "origin",
-    'Content-Type': 'application/json'
-  }
-}
+// const headers = {
+//   headers: {
+//     "Access-Control-Allow-Origin": "*",
+//     "Access-Control-Allow-Method": "*",
+//     "Access-Control-Allow-Headers": "*",
+//     // "Access-Control-Request-Headers": "origin",
+//     'Content-Type': 'application/json'
+//   }
+// }
 
 
 const cors_api_url = 'https://cors-anywhere.herokuapp.com/'
@@ -17,7 +17,11 @@ const textInput = document.querySelector('#blank')
 const searchButton = document.querySelector('#search')
 const searchRandomCharacter = document.querySelector('.random-character-button')
 const battleButton = document.querySelector('.battle-button')
+const modal = document.querySelector('.modal')
+let searchArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
 
+localStorage.setItem('items', JSON.stringify(searchArray))
+const data = JSON.parse(localStorage.getItem('items'))
 
 function getResults() {
   const input = textInput.value
@@ -25,7 +29,19 @@ function getResults() {
   return
 }
 
-searchButton.addEventListener('click', getResults)
+searchButton.addEventListener('click', function (e) {
+  e.preventDefault()
+  searchArray.push(textInput.value)
+  localStorage.setItem('items', JSON.stringify(searchArray))
+  getResults(textInput.value)
+  textInput.value = ''
+})
+
+data.forEach((item) => {
+  getResults(item)
+})
+
+
 searchRandomCharacter.addEventListener('click', getRandomCharacter)
 battleButton.addEventListener('click', doBattle)
 
@@ -35,6 +51,7 @@ async function getCharacter(x) {
   removeSearch()
 
   const web = (cors_api_url + `https://superheroapi.com/api/${API_KEY}/search/${x}`)
+
 
   //Return main search results by search input bar
   try {
@@ -73,15 +90,8 @@ async function getCharacter(x) {
       imgDiv.append(groups)
 
     })
-
   } catch (error) {
     console.log(error);
-  }
-
-  try {
-    let result1 = await axios.get(web);
-    console.log(result1)
-
   }
 }
 //End main search results
@@ -91,6 +101,7 @@ async function getCharacter(x) {
 
 async function getId(y) {
   const characterId = y.target.getAttribute('value')
+  removeSearch()
 
   const webId = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
 
@@ -99,11 +110,95 @@ async function getId(y) {
     console.log(result)
     const response = result.data
     console.log(response)
+
+    const characterPage = document.querySelector('.p-random-character')
+    const img = document.createElement('img')
+    img.setAttribute('src', response.image.url)
+    img.className = ('r1-img')
+    characterPage.append(img)
+
+    const charIdentity = document.createElement('p')
+    const identity = response.name
+    charIdentity.textContent = `Identity: ` + `${identity}`
+    charIdentity.className = ('r2-identity')
+    characterPage.append(charIdentity)
+
+    const charAlias = document.createElement('p')
+    const alias = response.biography.aliases
+    charAlias.textContent = `Alias: ` + `${alias}`
+    charAlias.className = ('r3-alias')
+    characterPage.append(charAlias)
+
+    const charAppearance = document.createElement('ul')
+    charAppearance.className = ('r4-appearance-list')
+    characterPage.append(charAppearance)
+
+    const genderLi = document.createElement('li')
+    const gender = response.appearance
+    genderLi.textContent = `Gender: ${gender.gender}`
+    charAppearance.append(genderLi)
+
+    const heightLi = document.createElement('li')
+    const height = response.appearance
+    heightLi.textContent = `Height: ${height.height}`
+    charAppearance.append(heightLi)
+
+    const weightLi = document.createElement('li')
+    const weight = response.appearance
+    weightLi.textContent = `Weight: ${weight.weight}`
+    charAppearance.append(weightLi)
+
+    const raceLi = document.createElement('li')
+    const race = response.appearance
+    raceLi.textContent = `Race: ${race.race}`
+    charAppearance.append(raceLi)
+
+    const organizations = document.createElement('p')
+    const affiliations = response.connections['group-affiliation']
+    organizations.textContent = `Known Affiliations: ` + `${affiliations}`
+    organizations.className = ('r5-affiliations')
+    characterPage.append(organizations)
+
+    const powerStats = document.createElement('ul')
+    powerStats.className = ('r6-powers')
+    characterPage.append(powerStats)
+
+    const combatLi = document.createElement('li')
+    const combat = response.powerstats
+    combatLi.textContent = `Combat: ${combat.combat}`
+    powerStats.append(combatLi)
+
+    const durabilityLi = document.createElement('li')
+    const durability = response.powerstats
+    durabilityLi.textContent = `Durability: ${durability.durability}`
+    powerStats.append(durabilityLi)
+
+    const intelligenceLi = document.createElement('li')
+    const intelligence = response.powerstats
+    intelligenceLi.textContent = `Intelligence: ${intelligence.intelligence}`
+    powerStats.append(intelligenceLi)
+
+    const powerLi = document.createElement('li')
+    const power = response.powerstats
+    powerLi.textContent = `Power: ${power.power}`
+    powerStats.append(intelligenceLi)
+
+    const speedLi = document.createElement('li')
+    const speed = response.powerstats
+    speedLi.textContent = `Speed: ${speed.speed}`
+    powerStats.append(speedLi)
+
+    const strengthLi = document.createElement('li')
+    const strength = response.powerstats
+    strengthLi.textContent = `Strength: ${strength.strength}`
+    powerStats.append(strengthLi)
   }
+
   catch (error) {
     console.log(error)
   }
 }
+
 //End of getId function
 
 
@@ -124,13 +219,16 @@ function removeSearch() {
 //End of search results function
 
 
-//Write function to randomly pull a character
+//Write function to randomly generate a character id
 function randomCharacter() {
   const min = 0;
   const max = 731;
   return Math.floor(min + Math.random() * (max + 1 - min));
 }
+//End of random character generator function
 
+
+//Function to grab the randomly generated ID's info
 async function getRandomCharacter() {
   randomCharacter()
   removeSearch()
@@ -387,127 +485,127 @@ async function doBattle() {
 
 //Function to create modal from search results
 
-function openModal() {
-  let modalButton = document.querySelector('.modal-btn')
-  let modal = document.querySelector('.modal')
-  let closeButton = document.querySelector('.close-btn')
+// function openModal() {
+//   let modalButton = document.querySelector('.modal-btn')
+//   let modal = document.querySelector('.modal')
+//   let closeButton = document.querySelector('.close-btn')
 
-  modalButton.onclick = function () {
-    modal.style.display = "block"
-  }
+//   modalButton.onclick = function () {
+//     modal.style.display = "block"
+//   }
 
-  closeButton.onclick = function () {
-    modal.style.display = "none"
-  }
+//   closeButton.onclick = function () {
+//     modal.style.display = "none"
+//   }
 
-  window.onclick = function (e) {
-    if (e.target == modal) {
-      modal.style.display = "none"
-    }
-  }
-  return
-}
-
-
+//   window.onclick = function (e) {
+//     if (e.target == modal) {
+//       modal.style.display = "none"
+//     }
+//   }
+//   return
+// }
 
 
-// //Retrieving character info from search results
-async function retrieveCharacter(e) {
-  removeSearch()
-  openModal()
-  const characterId = e.target.getAttribute('value')
-  const getCharacter = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
 
-  try {
-    result = await axios.get(getCharacter)
-    console.log(result)
-    const response = result.data
-    // console.log(response)
 
-    const modalPage = document.querySelector('.modal')
-    const modalImg = document.createElement('img')
-    img.setAttribute('src', response.image.url)
-    img.className = ('m1-img')
-    modalPage.append(modalImg)
+// // //Retrieving character info from search results
+// async function retrieveCharacter(e) {
+//   removeSearch()
+//   openModal()
+//   const characterId = e.target.getAttribute('value')
+//   const getCharacter = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
 
-    // const modalIdentity = document.createElement('p')
-    // const modalId = response.name
-    // modalIdentity.textContent = `Identity: ` + `${modalId}`
-    // modalIdentity.className = ('r2-identity')
-    // modalPage.append(modalIdentity)
+//   try {
+//     result = await axios.get(getCharacter)
+//     console.log(result)
+//     const response = result.data
+//     // console.log(response)
 
-    // const modalAlias = document.createElement('p')
-    // const modalA = response.biography.aliases
-    // modalAlias.textContent = `Alias: ` + `${modalA}`
-    // modalAlias.className = ('r3-alias')
-    // modalPage.append(modalAlias)
+//     const modalPage = document.querySelector('.modal')
+//     const modalImg = document.createElement('img')
+//     img.setAttribute('src', response.image.url)
+//     img.className = ('m1-img')
+//     modalPage.append(modalImg)
 
-    // const charAppearance = document.createElement('ul')
-    // charAppearance.className = ('r4-appearance-list')
-    // characterPage.append(charAppearance)
+//     // const modalIdentity = document.createElement('p')
+//     // const modalId = response.name
+//     // modalIdentity.textContent = `Identity: ` + `${modalId}`
+//     // modalIdentity.className = ('r2-identity')
+//     // modalPage.append(modalIdentity)
 
-    // const genderLi = document.createElement('li')
-    // const gender = response.appearance
-    // genderLi.textContent = `Gender: ${gender.gender}`
-    // charAppearance.append(genderLi)
+//     // const modalAlias = document.createElement('p')
+//     // const modalA = response.biography.aliases
+//     // modalAlias.textContent = `Alias: ` + `${modalA}`
+//     // modalAlias.className = ('r3-alias')
+//     // modalPage.append(modalAlias)
 
-    // const heightLi = document.createElement('li')
-    // const height = response.appearance
-    // heightLi.textContent = `Height: ${height.height}`
-    // charAppearance.append(heightLi)
+//     // const charAppearance = document.createElement('ul')
+//     // charAppearance.className = ('r4-appearance-list')
+//     // characterPage.append(charAppearance)
 
-    // const weightLi = document.createElement('li')
-    // const weight = response.appearance
-    // weightLi.textContent = `Weight: ${weight.weight}`
-    // charAppearance.append(weightLi)
+//     // const genderLi = document.createElement('li')
+//     // const gender = response.appearance
+//     // genderLi.textContent = `Gender: ${gender.gender}`
+//     // charAppearance.append(genderLi)
 
-    // const raceLi = document.createElement('li')
-    // const race = response.appearance
-    // raceLi.textContent = `Race: ${race.race}`
-    // charAppearance.append(raceLi)
+//     // const heightLi = document.createElement('li')
+//     // const height = response.appearance
+//     // heightLi.textContent = `Height: ${height.height}`
+//     // charAppearance.append(heightLi)
 
-    // const organizations = document.createElement('p')
-    // const affiliations = response.connections['group-affiliation']
-    // organizations.textContent = `Known Affiliations: ` + `${affiliations}`
-    // organizations.className = ('r5-affiliations')
-    // characterPage.append(organizations)
+//     // const weightLi = document.createElement('li')
+//     // const weight = response.appearance
+//     // weightLi.textContent = `Weight: ${weight.weight}`
+//     // charAppearance.append(weightLi)
 
-    // const powerStats = document.createElement('ul')
-    // powerStats.className = ('r6-powers')
-    // characterPage.append(powerStats)
+//     // const raceLi = document.createElement('li')
+//     // const race = response.appearance
+//     // raceLi.textContent = `Race: ${race.race}`
+//     // charAppearance.append(raceLi)
 
-    // const combatLi = document.createElement('li')
-    // const combat = response.powerstats
-    // combatLi.textContent = `Combat: ${combat.combat}`
-    // powerStats.append(combatLi)
+//     // const organizations = document.createElement('p')
+//     // const affiliations = response.connections['group-affiliation']
+//     // organizations.textContent = `Known Affiliations: ` + `${affiliations}`
+//     // organizations.className = ('r5-affiliations')
+//     // characterPage.append(organizations)
 
-    // const durabilityLi = document.createElement('li')
-    // const durability = response.powerstats
-    // durabilityLi.textContent = `Durability: ${durability.durability}`
-    // powerStats.append(durabilityLi)
+//     // const powerStats = document.createElement('ul')
+//     // powerStats.className = ('r6-powers')
+//     // characterPage.append(powerStats)
 
-    // const intelligenceLi = document.createElement('li')
-    // const intelligence = response.powerstats
-    // intelligenceLi.textContent = `Intelligence: ${intelligence.intelligence}`
-    // powerStats.append(intelligenceLi)
+//     // const combatLi = document.createElement('li')
+//     // const combat = response.powerstats
+//     // combatLi.textContent = `Combat: ${combat.combat}`
+//     // powerStats.append(combatLi)
 
-    // const powerLi = document.createElement('li')
-    // const power = response.powerstats
-    // powerLi.textContent = `Power: ${power.power}`
-    // powerStats.append(intelligenceLi)
+//     // const durabilityLi = document.createElement('li')
+//     // const durability = response.powerstats
+//     // durabilityLi.textContent = `Durability: ${durability.durability}`
+//     // powerStats.append(durabilityLi)
 
-    // const speedLi = document.createElement('li')
-    // const speed = response.powerstats
-    // speedLi.textContent = `Speed: ${speed.speed}`
-    // powerStats.append(speedLi)
+//     // const intelligenceLi = document.createElement('li')
+//     // const intelligence = response.powerstats
+//     // intelligenceLi.textContent = `Intelligence: ${intelligence.intelligence}`
+//     // powerStats.append(intelligenceLi)
 
-    // const strengthLi = document.createElement('li')
-    // const strength = response.powerstats
-    // strengthLi.textContent = `Strength: ${strength.strength}`
-    // powerStats.append(strengthLi)
+//     // const powerLi = document.createElement('li')
+//     // const power = response.powerstats
+//     // powerLi.textContent = `Power: ${power.power}`
+//     // powerStats.append(intelligenceLi)
 
-  }
-  catch (error) {
-    console.log(error)
-  }
-}
+//     // const speedLi = document.createElement('li')
+//     // const speed = response.powerstats
+//     // speedLi.textContent = `Speed: ${speed.speed}`
+//     // powerStats.append(speedLi)
+
+//     // const strengthLi = document.createElement('li')
+//     // const strength = response.powerstats
+//     // strengthLi.textContent = `Strength: ${strength.strength}`
+//     // powerStats.append(strengthLi)
+
+//   }
+//   catch (error) {
+//     console.log(error)
+//   }
+// }

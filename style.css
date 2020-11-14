@@ -44,7 +44,7 @@ body {
   margin:0;
   grid-row-start:2;
   grid-column-start:2;
-  justify-self: start;
+  justify-self: center;
 }
 
 .battle-button{
@@ -54,7 +54,7 @@ body {
   margin:0;
   grid-row-start:2;
   grid-column-start:3;
-  justify-self: start;
+  justify-self: center;
 }
 
 #blank {
@@ -281,16 +281,7 @@ margin-top:5px;
   margin-top:5px;
   padding:0;
 }
-/* .p-battle2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 1.3fr 1.1fr;
-  gap: 0px 15px;
-  grid-template-areas:
-    "."
-    "."
-    ".";
-} */
+
 
 .b2-img{
 height: 300px;
