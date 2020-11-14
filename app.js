@@ -77,6 +77,12 @@ async function getCharacter(x) {
   } catch (error) {
     console.log(error);
   }
+
+  try {
+    let result1 = await axios.get(web);
+    console.log(result1)
+
+  }
 }
 //End main search results
 
@@ -129,7 +135,7 @@ async function getRandomCharacter() {
   randomCharacter()
   removeSearch()
   const characterId = randomCharacter('value')
-  const character = `https://superheroapi.com/api/10157236778121862/${characterId}`
+  const character = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId}`)
 
   try {
     result = await axios.get(character)
