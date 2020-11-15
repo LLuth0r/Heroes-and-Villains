@@ -7,7 +7,7 @@ body {
 .title-bar{
   display: grid;
   grid-template-columns: 115px repeat(4, 1fr);
-  grid-template-rows: .1fr .1fr .5fr;
+  grid-template-rows: repeat(3, 4vmin);
   background-color: #85929E
 }
 
@@ -20,25 +20,25 @@ body {
 
 
 .h1{
-  grid-row-start:2;
-  grid-column-start:2;
-  grid-column: span 3;
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 3;
   font-family: 'Iceland', cursive;
   font-size:26px;
   margin: 0;
-  justify-self:start;
+  justify-self:center;
+  align-self: center;
 }
 
 .random-character-button {
-  height: 80%;
+  height: 100%;
   font-family: 'Iceland', cursive;
   font-size: 18px;
-  margin-right:20px;
+  margin-right:0;
   padding-bottom: 10px;
   grid-row-start:2;
   grid-column-start:5;
   grid-column-end: span 2;
-  justify-self: start;
+  justify-self: end;
   align-self: end;
 }
 
@@ -50,14 +50,14 @@ body {
 }
 
 .battle-button{
-  height: 80%;
+  height: 100%;
   font-family: 'Iceland', cursive;
   font-size:18px;
   grid-row-start:1;
   grid-column-start:5;
-  margin-right: 20px;
+  margin-right: 0;
   padding-bottom: 7px;
-  justify-self: start;
+  justify-self: end;
   align-self: end;
 }
 
@@ -72,7 +72,7 @@ body {
   grid-row-start: 3;
   grid-column-start: 2;
   grid-column-end: span 3;
-  height:60%;
+  height:85%;
   width:70%;
   justify-self:end;
   align-self: end;
@@ -89,12 +89,13 @@ body {
 #search{
   grid-row-start: 3;
   grid-column-start: 5;
-  height: 80%;
-  width: 85%;
+  height: 100%;
+  width: 100%;
   align-self: end;
   font-family: 'Iceland', cursive;
   font-size: 18px;
   padding-bottom:7px;
+  justify-self: end;
   
 }
 
@@ -357,7 +358,7 @@ margin-bottom:10px;
 /* Responsive Designs */
 @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 375px)
+  and (max-device-width: 500px)
   { 
 
     body{
@@ -379,18 +380,20 @@ margin-bottom:10px;
 
   .random-character-button{
     height: 100%;
+    margin-right:0;
     font-size: 14px;
     padding-bottom:15px;
     justify-self: end;
     align-self: end;
     grid-row-start:2;
-    grid-column-start: 5;
-    grid-column-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 6;
     
   }
 
   .h1 {
     font-size:16px;
+    text-align: center;
     justify-self:start;
     align-self: center;
     margin-right:50px;
@@ -401,7 +404,7 @@ margin-bottom:10px;
   .battle-button{
     height: 100%;
     font-size:14px;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-left:20px;
     padding-bottom:15px;
     justify-self:end;
@@ -433,7 +436,176 @@ margin-bottom:10px;
     grid-row-start: 3;
     grid-column-start: 2;
     grid-column-end: span 3;
-    height:75%;
+    height:70%;
+    width:70%;
+    justify-self:end;
+    align-self: start;
+    background-color: #2c3537;
+    opacity: 50%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    font-family: 'Iceland', cursive;
+    font-size: 14px;
+    color: white; 
+  }
+
+  .p-search-results{
+    margin:0;
+  }
+  .p-random-character{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 0 5px;
+  }
+
+  .r1-img{
+    height:100px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: black;
+    border-radius: 15%;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    margin-left: 25px;
+    justify-self: end;
+    align-self: start;
+    }
+    
+    .r2-identity{
+      grid-column-start: 2;
+      justify-self: start;
+      margin: 10px 0px 0px 0px;
+      font-size: 20px;
+    }
+    
+    .r3-alias{
+      grid-row-start: 2;
+      grid-column-start: 2;
+      justify-self: start;
+      align-self: start;
+      font-size: 16px;
+      text-align: left;
+      margin-top: 5px;
+      margin-right:15px;
+    }
+    
+    .r4-appearance-list{
+      grid-column-start: 2;
+      grid-row-start: 2;
+      justify-self: start;
+      align-self: end;
+      margin: 10px 0px 0px 0px;
+      list-style-type: none;
+      text-align: left;
+      padding: 0;
+      font-size: 16px;
+    }
+    
+    .r5-affiliations{
+      grid-column-start: 2;
+      justify-self: start;
+      align-self: center;
+      margin: 0px 20px 0px 0px;
+      font-size: 16px;
+      text-align: left;
+    }
+    
+    .r6-powers{
+      grid-row-start: 3;
+      grid-column-start: 1;      
+      justify-self: end;
+      align-self: start;
+      margin: 0;
+      list-style-type: none;
+      text-align: right;
+      padding: 0;
+      font-size: 16px;
+    }
+}
+
+/* Responsive design for 375px Width to 450px Width  */
+@media only screen 
+  and (min-device-width: 475px) 
+  and (max-device-width: 675px)
+  { 
+
+    body{
+      width: 100%;
+    }
+
+  .title-bar{
+    display: grid;
+    align-items: stretch;
+    width: 100vw;
+    grid-template-columns: repeat(5,20vmin);
+    grid-template-rows: repeat(3,4vmin);
+    background-color: #85929E
+  }
+
+  .logo{
+    height: 100%;
+  }
+
+  .random-character-button{
+    height: 100%;
+    margin-right:0;
+    font-size: 16px;
+    padding-bottom:15px;
+    justify-self: end;
+    align-self: end;
+    grid-row-start:2;
+    grid-column-start: 3;
+    grid-column-end: 6;
+    
+  }
+
+  .h1 {
+    font-size:20px;
+    text-align: center;
+    justify-self:start;
+    align-self: center;
+    margin-right:50px;
+    grid-column: 2 / span 3;
+    grid-row: 1 / span 2;
+  }
+
+  .battle-button{
+    height: 100%;
+    font-size:16px;
+    margin-right: 0px;
+    margin-left:20px;
+    padding-bottom:15px;
+    justify-self:end;
+
+  }
+
+  #search{
+    grid-row-start: 3;
+    grid-column-start: 5;
+    width:100%;
+    height:100%;
+    align-self: end;
+    justify-self: end;
+    font-size: 18px;
+    padding-bottom:7px;
+    align-self: start;
+  }
+    
+  #search:hover{
+    background-color: #1f618d;
+    border-color: black;
+    box-shadow: cornsilk;
+    border-width: 2px;
+    color:white;
+  }
+  
+  #blank {
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: span 3;
+    height:70%;
     width:70%;
     justify-self:end;
     align-self: start;
