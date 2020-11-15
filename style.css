@@ -1,8 +1,14 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: white;
 }
+
+
+.background-image img {
+    position: absolute;
+    opacity: .1;
+    z-index: -1;
+  }
 
 .title-bar{
   display: grid;
@@ -34,6 +40,7 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   margin-top:15px;
+  position: relative;
 }
 .random-character-button {
   height: 100%;
@@ -44,6 +51,7 @@ body {
   grid-column-start:1;
   justify-self: end;
   align-self: end;
+  background-color: #9DC3DD;
 }
 
 .random-character-button:hover{
@@ -61,6 +69,7 @@ body {
   grid-column-start: 2;
   justify-self: start;
   align-self: end;
+  background-color: #9DC3DD;
 }
 
 .battle-button:hover{
@@ -140,7 +149,8 @@ border-width: 3px;
 grid-column-start: 1;
 grid-row: span 3;
 margin-bottom:10px;
-justify-self: center;
+margin-right:5px;
+justify-self: end;
 align-self: center;
 }
 
@@ -189,6 +199,7 @@ font-size: 18px;
 /* This is the Random Character CSS */
 .p-random-character {
   display: grid;
+  z-index: 1;
   grid-template-columns: .3fr 1.7fr;
   grid-template-rows: repeat(auto-fit, minmax(4, .25fr));
   gap: 5px 15px;
@@ -209,6 +220,10 @@ grid-row: span 4;
 margin-left: 165px;
 justify-self: center;
 align-self: center;
+}
+
+.r1-img img{
+  opacity: 1;
 }
 
 .r2-identity{
