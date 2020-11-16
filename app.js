@@ -29,19 +29,19 @@ function getResults() {
   return
 }
 
-searchButton.addEventListener('click', function (e) {
-  e.preventDefault()
-  searchArray.push(textInput.value)
-  localStorage.setItem('items', JSON.stringify(searchArray))
-  getResults(textInput.value)
-  textInput.value = ''
-})
+// searchButton.addEventListener('click', function (e) {
+//   e.preventDefault()
+//   searchArray.push(textInput.value)
+//   localStorage.setItem('items', JSON.stringify(searchArray))
+//   getResults(textInput.value)
+//   textInput.value = ''
+// })
 
-data.forEach((item) => {
-  getResults(item)
-})
+// data.forEach((item) => {
+//   getResults(item)
+// })
 
-
+searchButton.addEventListener('click', getResults)
 searchRandomCharacter.addEventListener('click', getRandomCharacter)
 battleButton.addEventListener('click', doBattle)
 
@@ -158,6 +158,12 @@ async function getId(y) {
     organizations.textContent = `Known Affiliations: ` + `${affiliations}`
     organizations.className = ('r5-affiliations')
     characterPage.append(organizations)
+
+    const creator = document.createElement('p')
+    const publisherInfo = response.biography.publisher
+    creator.className = ('r6-publisher')
+    creator.textContent = `Publisher: ` + `${publisherInfo}`
+    characterPage.append(creator)
 
     const powerStats = document.createElement('ul')
     powerStats.className = ('r6-powers')
@@ -289,6 +295,12 @@ async function getRandomCharacter() {
     organizations.className = ('r5-affiliations')
     characterPage.append(organizations)
 
+    const creator = document.createElement('p')
+    const publisherInfo = response.biography.publisher
+    creator.className = ('r6-publisher')
+    creator.textContent = `Publisher: ` + `${publisherInfo}`
+    characterPage.append(creator)
+
     const powerStats = document.createElement('ul')
     powerStats.className = ('r6-powers')
     characterPage.append(powerStats)
@@ -335,6 +347,7 @@ async function getRandomCharacter() {
 async function doBattle() {
   randomCharacter()
   removeSearch()
+
   const characterId1 = randomCharacter('value')
   const characterId2 = randomCharacter('value')
   const character1 = (cors_api_url + `https://superheroapi.com/api/10157236778121862/${characterId1}`)
@@ -357,7 +370,7 @@ async function doBattle() {
 
     const battleIdentity1 = document.createElement('p')
     const bioName1 = response1.name
-    battleIdentity1.textContent = `Identity: ` + `${bioName1}`
+    battleIdentity1.textContent = `${bioName1}`
     battleIdentity1.className = ('b1-identity')
     battlePage1.append(battleIdentity1)
 
@@ -439,7 +452,7 @@ async function doBattle() {
 
     const battleIdentity2 = document.createElement('p')
     const bioName2 = response2.name
-    battleIdentity2.textContent = `Identity: ` + `${bioName2}`
+    battleIdentity2.textContent = `${bioName2}`
     battleIdentity2.className = ('b2-identity')
     battlePage2.append(battleIdentity2)
 
@@ -481,3 +494,14 @@ async function doBattle() {
     console.log(error)
   }
 }
+
+// function winner() {
+//   const result = document.createElement('p');
+//   result.className = 'winner'
+//   if (response1.powerstats.combat.value > response2.powerstats.combat.value) {
+//     result = `Winner!` + `${bioName1}`;
+//   } else {
+//     result = `Winner!` + `${bioName2}`;
+//   }
+//   return result;
+// }
