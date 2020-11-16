@@ -496,13 +496,33 @@ async function doBattle() {
 
     let battleId1 = document.querySelector('.b1-identity')
     let battleId2 = document.querySelector('.b2-identity')
-    console.log(battleId1)
-    battleId1.id = (response1.powerstats)
-    battleId2.id = (response2.powerstats)
 
+    let combatId1 = parseInt(response1.powerstats.combat, 10)
+    let combatId2 = parseInt(response2.powerstats.combat, 10)
+    let durabilityId1 = parseInt(response1.powerstats.durability, 10)
+    let durabilityId2 = parseInt(response2.powerstats.durability, 10)
+    let intelligenceId1 = parseInt(response1.powerstats.intelligence, 10)
+    let intelligenceId2 = parseInt(response2.powerstats.intelligence, 10)
+    let speedId1 = parseInt(response1.powerstats.speed, 10)
+    let speedId2 = parseInt(response2.powerstats.speed, 10)
+    let strengthId1 = parseInt(response1.powerstats.strength, 10)
+    let strengthId2 = parseInt(response2.powerstats.strength, 10)
+
+    let battleId1Combat = [combatId1, durabilityId1, intelligenceId1, speedId1, strengthId1]
+    let battleId2Combat = [combatId2, durabilityId2, intelligenceId2, speedId2, strengthId2]
+
+    const arr1Avg = arr => arr.reduce((a, b => a + b, 0) / arr.length)
+    const arr2Avg = arr => arr.reduce((a, b => a + b, 0) / arr.length)
+    arr1Avg(battleId1Combat)
+    arr2Avg(battleId2Combat)
+    console.log(combatId1, durabilityId1, intelligenceId1, speedId1, strengthId1)
+    console.log(arr1Avg)
+
+    // battleId1.id = (response1.powerstats)
+    // battleId2.id = (response2.powerstats)
 
     function winner() {
-      if (parseInt(battleId1.id, 10) > parseInt(battleId2.id, 10)) {
+      if (arr1Avg > arr2Avg) {
         result = `Winner!` + `${bioName1}`;
       } else {
         result = `Winner!` + `${bioName2}`;
