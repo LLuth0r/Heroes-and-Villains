@@ -360,7 +360,10 @@ async function doBattle() {
     console.log(result1, result2)
     const response1 = result1.data
     const response2 = result2.data
+
+
     // console.log(response)
+
 
     const battlePage1 = document.querySelector('.p-battle1')
     const bioPic1 = document.createElement('img')
@@ -490,18 +493,30 @@ async function doBattle() {
     strengthLi2.textContent = `${strength2.strength}`
     powerStats2.append(strengthLi2)
 
+
+    let battleId1 = document.querySelector('.b1-identity')
+    let battleId2 = document.querySelector('.b2-identity')
+    console.log(battleId1)
+    battleId1.id = (response1.powerstats)
+    battleId2.id = (response2.powerstats)
+
+
+    function winner() {
+      if (parseInt(battleId1.id, 10) > parseInt(battleId2.id, 10)) {
+        result = `Winner!` + `${bioName1}`;
+      } else {
+        result = `Winner!` + `${bioName2}`;
+      } console.log(result)
+      return result;
+    }
+    // winner()
+    const postResult = document.createElement('p');
+    postResult.textContent = winner()
+    postResult.className = 'winner'
+    powerStats2.append(postResult)
+
   } catch (error) {
     console.log(error)
   }
 }
 
-// function winner() {
-//   const result = document.createElement('p');
-//   result.className = 'winner'
-//   if (response1.powerstats.combat.value > response2.powerstats.combat.value) {
-//     result = `Winner!` + `${bioName1}`;
-//   } else {
-//     result = `Winner!` + `${bioName2}`;
-//   }
-//   return result;
-// }
