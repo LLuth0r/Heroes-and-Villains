@@ -493,10 +493,7 @@ async function doBattle() {
     strengthLi2.textContent = `${strength2.strength}`
     powerStats2.append(strengthLi2)
 
-
-    let battleId1 = document.querySelector('.b1-identity')
-    let battleId2 = document.querySelector('.b2-identity')
-
+    // Combat function to generate winner based on their powerstats
     let combatId1 = parseInt(response1.powerstats.combat, 10)
     let combatId2 = parseInt(response2.powerstats.combat, 10)
     let durabilityId1 = parseInt(response1.powerstats.durability, 10)
@@ -508,24 +505,17 @@ async function doBattle() {
     let strengthId1 = parseInt(response1.powerstats.strength, 10)
     let strengthId2 = parseInt(response2.powerstats.strength, 10)
 
-    let battleId1Combat = [combatId1, durabilityId1, intelligenceId1, speedId1, strengthId1]
-    let battleId2Combat = [combatId2, durabilityId2, intelligenceId2, speedId2, strengthId2]
+    let arr1Avg = (combatId1 + durabilityId1 + intelligenceId1 + speedId1 + strengthId1) / 5;
+    let arr2Avg = (combatId2 + durabilityId2 + intelligenceId2 + speedId2 + strengthId2) / 5;
 
-    const arr1Avg = arr => arr.reduce((a, b => a + b, 0) / arr.length)
-    const arr2Avg = arr => arr.reduce((a, b => a + b, 0) / arr.length)
-    arr1Avg(battleId1Combat)
-    arr2Avg(battleId2Combat)
-    console.log(combatId1, durabilityId1, intelligenceId1, speedId1, strengthId1)
     console.log(arr1Avg)
 
-    // battleId1.id = (response1.powerstats)
-    // battleId2.id = (response2.powerstats)
 
     function winner() {
       if (arr1Avg > arr2Avg) {
-        result = `Winner!` + `${bioName1}`;
+        result = `Winner: ` + `${bioName1}!`;
       } else {
-        result = `Winner!` + `${bioName2}`;
+        result = `Winner: ` + `${bioName2}!`;
       } console.log(result)
       return result;
     }
@@ -533,7 +523,7 @@ async function doBattle() {
     const postResult = document.createElement('p');
     postResult.textContent = winner()
     postResult.className = 'winner'
-    powerStats2.append(postResult)
+    powerStatsText.append(postResult)
 
   } catch (error) {
     console.log(error)
