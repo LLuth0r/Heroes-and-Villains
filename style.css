@@ -1,18 +1,31 @@
 html {
-  max-width: 2000px;
+  /* max-width: 2000px; */
   margin: 0 auto;
+}
+
+
+.background-image{
+  background-repeat: repeat;
+  background-size: 100% 100%;
+  /* overflow: hidden; */
+  width: 100%;
+  opacity: .1;
+  z-index: -1;
 }
 
 .background-image img {
     position: absolute;
-    max-width: 2000px;
-    opacity: .1;
-    z-index: -1;
+    background-image: url "https://w.wallhaven.cc/full/2k/wallhaven-2k62q6.png"
+    /* background-repeat: repeat;
+    max-width: inherit; */
+    /* max-width: 2000px; */
+    /* opacity: .1;
+    z-index: -1; */
   }
 
 .title-bar{
   position: relative;
-  max-width: 2000px;
+  /* max-width: 2000px; */
   margin: 0 0;
   display: flex;
   align-items: center;
@@ -108,98 +121,87 @@ align-self: center;
 }
 
 
-
-
 /* This is the Search Results CSS */
 .p-search-results {
- display: grid;
- margin-right: 150px;
- margin-top: 20px;
- margin-left:25px;
- grid-template-columns: 110px 1fr;
- grid-template-rows: .5fr 1fr 1fr;
- gap: 5px 5px;
-}
+  display: grid;
+  margin-right: 150px;
+  margin-top: 20px;
+  margin-left:25px;
+  grid-template-columns: 110px 1fr;
+  grid-template-rows: repeat(3, auto);
+  gap: 5px 5px;
+ }
+ 
+ .c1-poster {
+ height: 100px;
+ width: auto;
+ border-radius: 15%;
+ border-style: solid;
+ border-color: black;
+ border-width: 3px;
+ grid-column-start: 1;
+ grid-row: span 3;
+ margin-bottom:15px;
+ margin-right:5px;
+ justify-self: end;
+ align-self: start;
+ }
+ 
+ .c1-poster:hover {
+   cursor: pointer;
+   -webkit-border-radius:10px;
+   -moz-border-radius: 10px;
+   border-radius:10px;
+   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 53, 207, 0.85);
+   -moz-box-shadow:    0px 0px 30px 0px rgba(0, 53, 207, 0.85);
+   box-shadow:         0px 0px 30px 0px rgba(0, 53, 207, 0.85);
+ }
+ 
+ .c2-identity {
+  grid-column-start: 2;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  font-family: 'Iceland', cursive;
+  font-size: 18px;
+ }
+ 
 
-.c1-poster {
-height: 100px;
-width: auto;
-border-radius: 15%;
-border-style: solid;
-border-color: black;
-border-width: 3px;
-grid-column-start: 1;
-grid-row: span 3;
-margin-bottom:30px;
-margin-right:5px;
-justify-self: end;
-align-self: start;
-}
-
-.c1-poster:hover {
-  cursor: pointer;
-  -webkit-border-radius:10px;
-  -moz-border-radius: 10px;
-  border-radius:10px;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 53, 207, 0.85);
-  -moz-box-shadow:    0px 0px 30px 0px rgba(0, 53, 207, 0.85);
-  box-shadow:         0px 0px 30px 0px rgba(0, 53, 207, 0.85);
-}
-
-.c2-identity {
+ .c4-fullname {
  grid-column-start: 2;
  justify-self: start;
  align-self: start;
- margin: 0;
- font-family: 'Iceland', cursive;
- font-size: 18px;
-}
-
-.c3-occupation{
- grid-column-start: 2;
- justify-self: start;
- align-items: start;
  text-align: left;
- margin: 0px;
+ margin-bottom: 15px;
+ margin-top: 0;
  font-family: 'Iceland', cursive;
  font-size: 18px;
-}
-
-.c4-affiliations {
-grid-column-start: 2;
-justify-self: start;
-align-self: start;
-text-align: left;
-margin-bottom: 15px;
-margin-top: 0;
-font-family: 'Iceland', cursive;
-font-size: 18px;
-}
-/* End of Search Results CSS */
+ }
+ /* End of Search Results CSS */
 
 
 /* This is the Random Character CSS */
 .p-random-character{
   display: grid;
-  grid-template-columns: 110px 1fr;
-  grid-template-rows: repeat(6, auto);
+  justify-content: center;
+  grid-template-columns: 255px auto;
+  grid-template-rows: repeat(5, auto);
   gap: 0 5px;
-  margin: 0 auto;
-  overflow: hidden;
 }
 
 .r1-img{
-  width: 105px;
+  width: 250px;
   height: auto;
   border-radius: 15%;
   border-color: black;
   border-width: 5px;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 8;
   grid-column-start: 1;
   margin-left: 5px;
   margin-bottom: 5px;
   justify-self: end;
   align-self: start;
+  z-index: 1;
   }
   
   .r2-identity{
@@ -207,17 +209,17 @@ font-size: 18px;
     justify-self: start;
     align-self: start;
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     font-family: 'Iceland', cursive;
   }
   
   .r3-alias{
-    grid-row-start: 3;
+    grid-row-start: 2;
     grid-column-start: 2;
     justify-self: start;
     align-self: start;
-    font-size: 18px;
+    font-size: 22px;
     text-align: left;
     padding:0;
     margin-top: 0;
@@ -227,46 +229,46 @@ font-size: 18px;
   
   .r4-appearance-list{
     grid-column-start: 2;
-    grid-row-start: 2;
+    grid-row-start: 3;
     justify-self: start;
     align-self: start;
     margin: 0;
     padding:0;
     list-style-type: none;
-    font-size: 18px;
+    font-size: 22px;
     font-family: 'Iceland', cursive;
   }
   
   .r5-affiliations{
-    grid-column-start: 2;
+    grid-column: 1 / span 2;
     justify-self: start;
     align-self: start;
     margin: 0px 20px 0px 0px;
-    font-size: 18px;
+    font-size: 22px;
     text-align: left;
     font-family: 'Iceland', cursive;
   }
   
   .r6-powers{
-    grid-row: 4 / span 3;
-    grid-column-start: 1;      
-    justify-self: end;
-    align-self: start;
+    grid-row: 4 / span 4;
+    grid-column-start: 2;      
+    justify-self: start;
+    align-self: center;
     margin: 0px;
     list-style-type: none;
-    text-align: right;
+    text-align: left;
     padding: 0;
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'Iceland', cursive;
   }
 
   .r6-publisher {
     grid-column-start: 2;
-    font-size: 18px;
-    align-self: end;
+    grid-row-start: 8;
+    font-size: 22px;
+    align-self: start;
     margin: 0;
     font-family: 'Iceland', cursive;
-
   }
 
 /*Battle Section*/
@@ -462,7 +464,7 @@ margin-bottom:10px;
     font-size: 14px;
    }
    
-   .c4-affiliations {
+   .c4-fullname {
    margin-bottom: 10px;
    margin-top: 0;
    font-size: 14px;
@@ -713,7 +715,7 @@ margin-bottom:10px;
       font-size: 16px;
      }
      
-     .c4-affiliations {
+     .c4-fullname {
      margin-bottom: 10px;
      margin-top: 0;
      font-size: 16px;
@@ -936,12 +938,14 @@ margin-bottom:10px;
     }
   
     .p-search-results {
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       margin-right: 10px;
       margin-top: 20px;
       margin-left:15px;
-      grid-template-columns: 80px 1fr;
-      grid-template-rows: .5fr 1fr 1fr;
+      /* grid-template-columns: 80px 1fr;
+      grid-template-rows: .5fr 1fr 1fr; */
      }
      
      .c1-poster {
@@ -965,7 +969,7 @@ margin-bottom:10px;
       font-size: 16px;
      }
      
-     .c4-affiliations {
+     .c4-fullname {
      margin-bottom: 10px;
      margin-top: 0;
      font-size: 16px;
@@ -1125,5 +1129,3 @@ margin-bottom:10px;
       padding:0;
     }
   }
-
-  

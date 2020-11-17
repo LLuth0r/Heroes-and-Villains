@@ -77,17 +77,11 @@ async function getCharacter(x) {
       charName.className = ('c2-identity')
       imgDiv.append(charName)
 
-      const jobTitle = document.createElement('p')
-      const occupation = item.work['occupation']
-      jobTitle.textContent = `Occupation: ` + `${occupation}`
-      jobTitle.className = ('c3-occupation')
-      imgDiv.append(jobTitle)
-
-      const groups = document.createElement('p')
-      const affiliations = item.connections['group-affiliation']
-      groups.textContent = `Known Affiliations: ` + `${affiliations}`
-      groups.className = ('c4-affiliations')
-      imgDiv.append(groups)
+      const name = document.createElement('p')
+      const fullName = item.biography['full-name']
+      name.textContent = `Full Name: ` + `${fullName}`
+      name.className = ('c4-fullname')
+      imgDiv.append(name)
 
     })
   } catch (error) {
