@@ -42,7 +42,6 @@ Heroes & Villains provides a database full of your favorite superheroes and comi
 - **MVP**:  
     1. Heroes & Villains Search Bar - Return biography page
     2. Random Hero/Villain of the Day
-    3.
     
 - **Post-MVP**: 
     1. Superhero Battle - Compare two characters powersets to see who will win! 
@@ -68,4 +67,4 @@ Heroes & Villains provides a database full of your favorite superheroes and comi
 ![Priority-Matrix](https://res.cloudinary.com/decd84s0g/image/upload/v1604980970/Heroes%20and%20Villains/Heroes_Villains_Priority_Matrix.001.jpg)
 
 - **Timeframes**:\
-![Project-Timing](https://res.cloudinary.com/decd84s0g/image/upload/v1605023564/Heroes%20and%20Villains/Heroes_and_Villains_Project_Timing.001.jpg) 
+![Project-Timing](https://res.cloudinary.com/decd84s0g/image/upload/v1605629188/Heroes%20and%20Villains/Heroes_Villains_Project_Timing_Final.001.jpg) 
