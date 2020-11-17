@@ -1,32 +1,22 @@
-html {
-  /* max-width: 2000px; */
-  margin: 0 auto;
-}
-
 
 .background-image{
   background-repeat: repeat;
   background-size: 100% 100%;
   /* overflow: hidden; */
-  width: 100%;
+  /* width: 100%;
   opacity: .1;
-  z-index: -1;
+  z-index: -1; */
 }
 
 .background-image img {
     position: absolute;
-    background-image: url "https://w.wallhaven.cc/full/2k/wallhaven-2k62q6.png"
-    /* background-repeat: repeat;
-    max-width: inherit; */
-    /* max-width: 2000px; */
-    /* opacity: .1;
-    z-index: -1; */
+    background-repeat: repeat;
+    opacity: .1;
+    z-index: -1; 
+    width: 100vw;
   }
 
 .title-bar{
-  position: relative;
-  /* max-width: 2000px; */
-  margin: 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,20 +24,69 @@ html {
 }
 
 .logo {
-height: 100px;
+height: 65px;
 align-self: flex-start;
 }
 
 .h1{
 align-self: center;
   font-family: 'Iceland', cursive;
-  font-size:40px;
+  font-size:28px;
   margin-left: 100px;
 }
 
+.search-section{
+  display:flex;
+  justify-content: center;
+  background-color: #85929E
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top:15px;
+}
+.random-character-button {
+  height: 100%;
+  font-family: 'Iceland', cursive;
+  font-size: 18px;
+  margin-right: 15px;
+  justify-self: end;
+  align-self: end;
+  background-color: #9DC3DD;
+}
+
+.random-character-button:hover{
+  background-color: #1f618d;
+  border-color: black;
+  box-shadow: cornsilk;
+  border-width: 2px;
+  color:white;
+}
+
+.battle-button{
+  margin-left: 25px;
+  height: 100%;
+  font-family: 'Iceland', cursive;
+  font-size:18px;
+  justify-self: start;
+  align-self: end;
+  background-color: #9DC3DD;
+}
+
+.battle-button:hover{
+  background-color: #1f618d;
+  border-color: black;
+  box-shadow: cornsilk;
+  border-width: 2px;
+  color:white;
+}
+
 #blank {
+  margin-left: 25px;
   align-self: flex-end;
-  flex-grow: 1;
   background-color: #2c3537;
   opacity: 50%;
   border-style: solid;
@@ -60,12 +99,12 @@ align-self: center;
 
 #search{
   align-self: flex-end;
-  background-color: #1f618d;
-  border-color: black;
+  background-color: #9DC3DD;
   height: 100%;
   width: 10%;
   font-family: 'Iceland', cursive;
   font-size: 18px;
+  padding:0px;
 }
 
 #search:hover{
@@ -75,50 +114,6 @@ align-self: center;
   border-width: 2px;
   color:white;
 } 
-
-.buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  margin-top:15px;
-  position: relative;
-}
-.random-character-button {
-  height: 100%;
-  font-family: 'Iceland', cursive;
-  font-size: 18px;
-  margin-right: 15px;
-  grid-row-start:1;
-  grid-column-start:1;
-  justify-self: end;
-  align-self: end;
-  background-color: #9DC3DD;
-}
-
-.random-character-button:hover{
-  background-color: #1f618d;
-  border-color: black;
-  box-shadow: cornsilk;
-  border-width: 2px;
-}
-
-.battle-button{
-  height: 100%;
-  font-family: 'Iceland', cursive;
-  font-size:18px;
-  grid-row-start:1;
-  grid-column-start: 2;
-  justify-self: start;
-  align-self: end;
-  background-color: #9DC3DD;
-}
-
-.battle-button:hover{
-  background-color: #1f618d;
-  border-color: black;
-  box-shadow: cornsilk;
-  border-width: 2px;
-}
 
 
 /* This is the Search Results CSS */
@@ -183,6 +178,7 @@ align-self: center;
 /* This is the Random Character CSS */
 .p-random-character{
   display: grid;
+  margin-top: 40px;
   justify-content: center;
   grid-template-columns: 255px auto;
   grid-template-rows: repeat(5, auto);
@@ -274,11 +270,11 @@ align-self: center;
 /*Battle Section*/
 .p-battle1 {
     display: grid;
-    gap: 0px 15px;
+    gap: 0px 0;
     margin-right: 125px;
     margin-left: 125px;
-    grid-template-columns: 1fr .75fr 1fr;
-    grid-template-rows: .25fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
     margin-right: 10px;
     margin-left: 10px;  
 }
@@ -315,11 +311,12 @@ margin-top:5px;
 }
 
 .b1-powers-text {
-  grid-column-start:2;
+  grid-column 1 / span 3;
   grid-row-start:3;
   list-style-type: none;
   font-family: 'Iceland',cursive;
   font-size:22px;
+  text-align: center;
   justify-self: center;
   align-self:start;
   margin-top:5px;
@@ -368,764 +365,153 @@ margin-bottom:10px;
 }
 
 /* Responsive Designs */
-@media only screen 
-  and (min-device-width: 280px) 
-  and (max-device-width: 400px)
+@media (max-width: 475px) 
   { 
 
-    body{
-      width: 100%;
+    .background-image img {
+      width: 100vw;
     }
 
-  .title-bar{
-    display: grid;
-    align-items: stretch;
-    width: 100vw;
-    grid-template-columns: 75px repeat(4, 1fr);
-    grid-template-rows: repeat(3,6vmin);
-    background-color: #85929E
-  }
-
-  .logo{
-    height: 100%;
-  }
-
-
-  .h1 {
-    font-size:16px;
-    text-align: center;
-    justify-self:start;
-    align-self: center;
-    margin-right:50px;
-    grid-column: 2 / span 5;
-    grid-row: 1 / span 2;
-  }
-
+    .logo {
+    height: 50px;
+    }
+    
+    .h1{
+     font-size:18px;
+    margin-left: 10px;
+    align-self: flex-start;
+    }
+    
   .buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    flex-wrap: wrap;
+    align-items: flex-start;
     margin-top:15px;
   }
+  
   .random-character-button {
     height: 100%;
     font-size: 12px;
-    margin-right: 15px;
+    margin-right: 5px;
   }  
   
   .battle-button{
     height: 100%;
     font-size:12px;
+    margin-left:5px;
+    margin-right:25px;
+    margin-bottom: 5px;
   }
 
-  #search{
-    grid-row-start: 3;
-    grid-column-start: 5;
-    font-size: 14px;
-    padding-bottom:15px;
-  }
-      
   #blank {
-    height:70%;
-    width:70%;
-    font-size: 14px;
-    grid-column: 2 / span 3;
-  }
+    font-size: 12px;
+    margin-left:5px;
+   }
+   
+   #search{
+     font-size: 14px;
+     flex-grow: .25;
+   }
 
   .p-search-results {
     display: grid;
-    margin-right: 0;
+    margin-right: 10px;
     margin-top: 20px;
     margin-left:5px;
-    margin-right: 5px;
     grid-template-columns: 65px 1fr;
-    grid-template-rows: .25fr auto auto;
+    grid-template-rows: repeat(3, auto);
+    gap: 5px 5px;
    }
    
    .c1-poster {
-   width: 55px;
-   height: auto;
-   grid-column-start: 1;
-   grid-row: span 3;
-   margin-bottom:10px;
+   height: 75px;
+   margin-bottom:15px;
    margin-right:5px;
-   justify-self: end;
+   justify-self: start;
    align-self: start;
-   } 
-   
+   }
+     
    .c2-identity {
-    margin: 0;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
    }
    
-   .c3-occupation{
-    margin: 0px;
-    font-size: 14px;
-   }
-   
    .c4-fullname {
-   margin-bottom: 10px;
-   margin-top: 0;
    font-size: 14px;
    }
    /* End of Search Results CSS */
 
-  .p-random-character{
-    display: grid;
-    grid-template-columns:  2fr;
-    grid-template-rows: repeat(6, auto);
-    gap: 0 5px;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
+   .p-random-character{
+    margin: 5px 5px 0 10px;
+    grid-template-columns: 105px auto;
   }
-
+  
   .r1-img{
-    width: 65px;
-    height: auto;
-    grid-row: 1 / span 2;
-    grid-column-start: 1;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    justify-self: end;
-    align-self: start;
+    width: 100px;
+    justify-self: start;
     }
     
     .r2-identity{
-      grid-column-start: 2;
-      justify-self: start;
-      margin-bottom: 0;
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 20px;
+      margin-bottom:5px;
     }
     
     .r3-alias{
-      grid-row-start: 3;
-      grid-column-start: 2;
-      justify-self: start;
-      align-self: start;
       font-size: 14px;
-      text-align: left;
-      margin-top: 0;
-      margin-right:15px;
+      margin-right:0;
+      margin-bottom:5px;
+
     }
     
     .r4-appearance-list{
-      grid-column-start: 2;
-      grid-row-start: 2;
-      justify-self: start;
-      align-self: start;
-      margin: 0;
-      list-style-type: none;
-      font-size: 18px;
+      font-size: 14px;
+      margin-bottom: 5px;
     }
     
     .r5-affiliations{
-      grid-column-start: 2;
-      justify-self: start;
-      align-self: start;
-      margin: 0px 20px 0px 0px;
       font-size: 14px;
-      text-align: left;
     }
     
     .r6-powers{
-      grid-row: 3 / span 3;
-      grid-column-start: 1;      
-      justify-self: end;
-      align-self: start;
-      margin: 0px;
-      list-style-type: none;
-      text-align: right;
-      padding: 0;
       font-size: 14px;
+      margin-bottom: 5px;
     }
-
+  
     .r6-publisher {
       font-size: 14px;
-      align-self: end;
-      margin: 0;
     }
 
   .p-battle1 {
-      display: grid;
-      grid-template-columns: 1fr .75fr 1fr;
-      grid-template-rows: auto auto auto;
-      gap: 0px 15px;
       margin-right: 10px;
       margin-left: 10px;
   }
   
 .b1-img{
-  height: 125px;
-  width:auto;
-  grid-row-start:2;
-  justify-self: end;
-  margin-left: 10px;
+  height: 100px;
   }
   
   .b1-identity{
-  grid-row-start:1;
-  justify-self:end;
-  align-self: start;
   font-size: 20px;
-  text-align:right;
-  margin:0;
   }
   
   .b1-powers {
-  grid-row-start:3;
-  list-style-type: none;
   font-size: 18px;
-  text-align:right;
-  margin-top:5px;
   }
   
   .b1-powers-text {
-    grid-column-start:2;
-    grid-row-start:3;
-    list-style-type: none;
-    font-size:18px;
-    justify-self: center;
-    text-align: center;
-    align-self:start;
-    margin-top:5px;
-    padding:0;
+     font-size:18px;
   }
   
   .b2-img{
-  height: 125px;
-  width: auto;
-  grid-column-start:3;
-  grid-row-start: 2;
-  justify-self: left;
-  margin:0;
-  border-radius: 15%;
-  border-style: solid;
-  border-width: 2px;
+  height: 100px;
   }
   
   .b2-identity{
-  grid-column-start:3;
-  grid-row-start:1;
   font-size:20px;
-  justify-self: start;
-  align-self:end;
-  margin: 0;
   }
   
   .b2-powers {
-    grid-column-start:3;
-    grid-row-start:3;
     font-size: 18px;
-    margin-top:5px;
-    padding:0;
   }
 }
 
 /* Responsive design for 400px Width to 500px Width  */
-@media only screen 
-  and (min-device-width: 400px) 
-  and (max-device-width: 500px)
-  { 
-  
-    .title-bar{
-      display: grid;
-      align-items: stretch;
-      width: 100vw;
-      grid-template-columns: 75px repeat(4, 1fr);
-      grid-template-rows: repeat(3,6vmin);
-      background-color: #85929E
-    }
-  
-    .logo{
-      height: 100%;
-    }
-  
-    .h1 {
-      font-size:20px;
-      text-align: center;
-      justify-self:center;
-      align-self: center;
-      margin-right:25px;
-      grid-column: 2 / span 5;
-      grid-row: 1 / span 2;
-    }
-  
-    .buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      margin-top:15px;
-    }
-    .random-character-button {
-      height: 100%;
-      font-size: 16px;
-      margin-right: 15px;
-    }
-        
-    .battle-button{
-      height: 100%;
-      font-size:16px;
-    }
-  
-    #search{
-      grid-row-start: 3;
-      grid-column-start: 5;
-      font-size: 14px;
-      padding-bottom:15px;
-    }
-        
-    #blank {
-      height:70%;
-      width:70%;
-      font-size: 14px;
-      grid-column: 2 / span 3;
-    }
-  
-    .p-search-results {
-      display: grid;
-      margin-right: 0;
-      margin-top: 20px;
-      margin-left:15px;
-      grid-template-columns: 80px 1fr;
-      grid-template-rows: .25fr 1fr 1fr;
-     }
-     
-     .c1-poster {
-     width: 75px;
-     height: auto;
-     grid-column-start: 1;
-     grid-row: span 3;
-     margin-bottom:10px;
-     margin-right:5px;
-     justify-self: end;
-     align-self: start;
-     }
-   
-     .c2-identity {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-     }
-     
-     .c3-occupation{
-      margin: 0px;
-      font-size: 16px;
-     }
-     
-     .c4-fullname {
-     margin-bottom: 10px;
-     margin-top: 0;
-     font-size: 16px;
-     }
-     /* End of Search Results CSS */
-  
-     .p-random-character{
-      display: grid;
-      grid-template-columns:  2fr;
-      grid-template-rows: repeat(7, auto);
-      gap: 0 7px;
-      margin-left: 25px;
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-  
-    .r1-img{
-      width: 100px;
-      height: auto;
-      grid-row: 1 / span 3;
-      grid-column-start: 1;
-      margin-left: 5px;
-      margin-bottom: 0;
-      justify-self: end;
-      align-self: start;
-      }
-      
-      .r2-identity{
-        grid-column-start: 2;
-        justify-self: start;
-        margin-bottom: 0;
-        font-size: 22px;
-        font-weight: bold;
-      }
-      
-      .r3-alias{
-        grid-row-start: 3;
-        grid-column-start: 2;
-        justify-self: start;
-        align-self: start;
-        font-size: 16px;
-        text-align: left;
-        margin-top: 0;
-        margin-right:15px;
-      }
-      
-      .r4-appearance-list{
-        grid-column-start: 2;
-        grid-row-start: 2;
-        justify-self: start;
-        align-self: start;
-        margin: 0;
-        list-style-type: none;
-        font-size: 16px;
-      }
-      
-      .r5-affiliations{
-        grid-column-start: 2;
-        justify-self: start;
-        align-self: start;
-        margin: 0px 20px 0px 0px;
-        font-size: 16px;
-        text-align: left;
-      }
-      
-      .r6-powers{
-        grid-row: 4 / span 3;
-        grid-column-start: 1;      
-        justify-self: end;
-        align-self: end;
-        margin: 0px;
-        list-style-type: none;
-        text-align: right;
-        padding: 0;
-        font-size: 16px;
-      }
-  
-      .r6-publisher {
-        grid-row-start: 6;
-        font-size: 16px;
-        align-self: start;
-        margin: 0;
-      }
-  
-    .p-battle1 {
-        display: grid;
-        grid-template-columns: 1fr .75fr 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 0px 15px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-    
-  .b1-img{
-    height: 150px;
-    width:auto;
-    grid-row-start:2;
-    justify-self: end;
-    margin-left: 10px;
-    }
-    
-    .b1-identity{
-    grid-row-start:1;
-    justify-self:end;
-    align-self: start;
-    font-size: 24px;
-    text-align:right;
-    margin:0;
-    }
-    
-    .b1-powers {
-    grid-row-start:3;
-    list-style-type: none;
-    font-size: 18px;
-    text-align:right;
-    margin-top:5px;
-    }
-    
-    .b1-powers-text {
-      grid-column-start:2;
-      grid-row-start:3;
-      list-style-type: none;
-      font-size:18px;
-      justify-self: center;
-      text-align: center;
-      align-self:start;
-      margin-top:5px;
-      padding:0;
-    }
-    
-    .b2-img{
-    height: 150px;
-    width: auto;
-    grid-column-start:3;
-    grid-row-start: 2;
-    justify-self: left;
-    margin:0;
-    border-radius: 15%;
-    border-style: solid;
-    border-width: 2px;
-    }
-    
-    .b2-identity{
-    grid-column-start:3;
-    grid-row-start:1;
-    font-size:24px;
-    justify-self: start;
-    align-self:end;
-    margin: 0;
-    }
-    
-    .b2-powers {
-      grid-column-start:3;
-      grid-row-start:3;
-      font-size: 18px;
-      margin-top:5px;
-      padding:0;
-    }
-  }
-
-  @media only screen 
-  and (min-device-width: 500px) 
-  and (max-device-width: 700px)
-  { 
-  
-    .title-bar{
-      display: grid;
-      align-items: stretch;
-      width: 100vw;
-      grid-template-columns: 75px repeat(4, 1fr);
-      grid-template-rows: repeat(3,6vmin);
-      background-color: #85929E
-    }
-  
-    .logo{
-      height: 100%;
-    }
-  
-  
-    .h1 {
-      font-size:24px;
-      text-align: center;
-      justify-self:center;
-      align-self: center;
-      margin-right:25px;
-      grid-column: 2 / span 5;
-      grid-row: 1 / span 2;
-    }
-  
-    .buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      margin-top:15px;
-    }
-    .random-character-button {
-      height: 100%;
-      font-size: 16px;
-      margin-right: 15px;
-    }
-    
-    
-    .battle-button{
-      height: 100%;
-      font-size:16px;
-    }
-  
-    #search{
-      grid-row-start: 3;
-      grid-column-start: 5;
-      font-size: 18px;
-      padding-bottom:0px;
-    }
-        
-    #blank {
-      height:80%;
-      width:70%;
-      font-size: 14px;
-      grid-column: 2 / span 3;
-    }
-  
-    .p-search-results {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-right: 10px;
-      margin-top: 20px;
-      margin-left:15px;
-      /* grid-template-columns: 80px 1fr;
-      grid-template-rows: .5fr 1fr 1fr; */
-     }
-     
-     .c1-poster {
-     width: 75px;
-     height: auto;
-     grid-row-start: 1 / span 3;
-     align-self: start;
-     margin-bottom:10px;
-     margin-right:5px;
-     }
-   
-     
-     .c2-identity {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-     }
-     
-     .c3-occupation{
-      margin: 0px;
-      font-size: 16px;
-     }
-     
-     .c4-fullname {
-     margin-bottom: 10px;
-     margin-top: 0;
-     font-size: 16px;
-     }
-     /* End of Search Results CSS */
-  
-     .p-random-character{
-      display: grid;
-      grid-template-columns:  2fr;
-      grid-template-rows: repeat(7, auto);
-      gap: 0 7px;
-      margin-left: 25px;
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-  
-    .r1-img{
-      width: 100px;
-      height: auto;
-      grid-row: 1 / span 3;
-      grid-column-start: 1;
-      margin-left: 5px;
-      margin-bottom: 0;
-      justify-self: end;
-      align-self: start;
-      }
-      
-      .r2-identity{
-        grid-column-start: 2;
-        justify-self: start;
-        margin-bottom: 0;
-        font-size: 22px;
-        font-weight: bold;
-      }
-      
-      .r3-alias{
-        grid-row-start: 3;
-        grid-column-start: 2;
-        justify-self: start;
-        align-self: start;
-        font-size: 16px;
-        text-align: left;
-        margin-top: 0;
-        margin-right:15px;
-      }
-      
-      .r4-appearance-list{
-        grid-column-start: 2;
-        grid-row-start: 2;
-        justify-self: start;
-        align-self: start;
-        margin: 0;
-        list-style-type: none;
-        font-size: 16px;
-      }
-      
-      .r5-affiliations{
-        grid-column-start: 2;
-        justify-self: start;
-        align-self: start;
-        margin: 0px 20px 0px 0px;
-        font-size: 16px;
-        text-align: left;
-      }
-      
-      .r6-powers{
-        grid-row: 4 / span 3;
-        grid-column-start: 1;      
-        justify-self: end;
-        align-self: end;
-        margin: 0px;
-        list-style-type: none;
-        text-align: right;
-        padding: 0;
-        font-size: 16px;
-      }
-  
-      .r6-publisher {
-        grid-row-start: 6;
-        font-size: 16px;
-        align-self: start;
-        margin: 0;
-  
-      }
-  
-    .p-battle1 {
-        display: grid;
-        grid-template-columns: 1fr .75fr 1fr;
-        grid-template-rows: .25fr 1fr 1fr;
-        gap: 0px 15px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-    
-  .b1-img{
-    height: 100%;
-    width:auto;
-    grid-row-start:2;
-    justify-self: end;
-    margin-left: 10px;
-    }
-    
-    .b1-identity{
-    grid-row-start:1;
-    justify-self:end;
-    align-self: start;
-    font-size: 24px;
-    text-align:right;
-    margin:0;
-    }
-    
-    .b1-powers {
-    grid-row-start:3;
-    list-style-type: none;
-    font-size: 18px;
-    text-align:right;
-    margin-top:5px;
-    }
-    
-    .b1-powers-text {
-      grid-column-start:2;
-      grid-row-start:3;
-      list-style-type: none;
-      font-size:18px;
-      justify-self: center;
-      align-self:start;
-      margin-top:5px;
-      padding:0;
-    }
-    
-    .b2-img{
-    height: 100%;
-    width: auto;
-    grid-column-start:3;
-    grid-row-start: 2;
-    justify-self: left;
-    margin:0;
-    border-radius: 15%;
-    border-style: solid;
-    border-width: 2px;
-    }
-    
-    .b2-identity{
-    grid-column-start:3;
-    grid-row-start:1;
-    font-size:24px;
-    justify-self: start;
-    align-self:end;
-    margin: 0;
-    }
-    
-    .b2-powers {
-      grid-column-start:3;
-      grid-row-start:3;
-      font-size: 18px;
-      margin-top:5px;
-      padding:0;
-    }
-  }
